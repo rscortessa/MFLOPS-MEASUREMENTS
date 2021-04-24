@@ -1,4 +1,5 @@
-void multiplicacion_directa(const double * A, const double * B, double* C, const int N)
+#include<vector>
+void multiplicacion_directa(std::vector<double> & A,std::vector<double> & B,std::vector<double> & C, int N)
 {
   for(int i=0;i<N*N;i++)
     {

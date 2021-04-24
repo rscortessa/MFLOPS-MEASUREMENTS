@@ -2,7 +2,7 @@
 //Como modo alternativo a la operación directa usaremos blocking
 //Primero, simplificaremos el problema con tal de usar arreglos unidimensionales
 
-double TRBlock(const double * A, const double * ABT, const int N, int P)
+  double TRBlock(std::vector<double> & A, std::vector<double>&ABT, const int N, int P)
 {
     //Segundo, subdividimos la matriz A en pequeños bloques dentro de la matriz
     //de dimensión P, con el fin de trasponer estos pequeños bloques dentro de
