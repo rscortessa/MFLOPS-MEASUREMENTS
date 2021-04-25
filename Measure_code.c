@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "papi.h"
+#include <random>
+
+double desviacion_estandar(std::vector<double> & MFLOPS)
+void fill_vector(std::vector<double> & v);
+
 
 int main()
 {
@@ -66,5 +71,13 @@ double desviacion_estandar(std::vector<double> & MFLOPS)
   return sigma;
 }
 
-
+void fill_random_vector(std::vector<double> & v)
+{
+    std::mt19937 gen(1);
+    std::uniform_real_distribution<> dist(-1.0,1.0);
+    for(auto & x: v)
+    {
+        x=dist(gen);
+    }
+}
 
