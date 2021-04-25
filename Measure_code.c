@@ -5,7 +5,7 @@
 #include <random>
 
 double desviacion_estandar(std::vector<double> & MFLOPS)
-void fill_vector(std::vector<double> & v);
+void fill_random_vector(std::vector<double> & v);
 
 
 int main()
