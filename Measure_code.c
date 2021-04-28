@@ -1,15 +1,22 @@
-#include "constantes.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "papi.h"
+#include <papi.h>
 #include <random>
+#include<iostream>
+#include<fstream>
 
-double desviacion_estandar(std::vector<double> & MFLOPS)
+double desviacion_estandar(std::vector<double> & MFLOPS);
 void fill_random_vector(std::vector<double> & v);
 
 
 int main()
 {
+  float real_time, proc_time,mflops;
+  long long flpops;
+  float ireal_time, iproc_time, imflops;
+  long long iflpops;
+  int retval;
+  int cuentas=100;
  //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
@@ -33,7 +40,7 @@ int main()
 	  exit(1);
 	}
       //Se coloca el código a medir...  
-      multiplicacion_directa(a,b,c,Nmax);
+      //multiplicacion_directa(a,b,c,Nmax);
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
 	{    
 	  printf("retval: %d\n", retval);
@@ -47,16 +54,19 @@ int main()
       PROC_TIME[i+1]=proc_time;
       
       // En este espacio se imprime algún resultado del código
-      std::ofstream fout;
-      fout.open("Data.txt"); // Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      for(int i=0;i<Nmax;i++)
-	{
-	  fout<<c[i]<<"\t";
-	}
+      std::ofstream trash ("Data.txt");
+      double aux_sum=0.0;
+      // Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
+      for(int i=0;i<c.size();i++)
+      {
+        aux_sum += c[i];
+    }
+      trash << aux_sum ;
+      trash.close();
     }
       std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<std::endl;
       std::cout<<MFLOPS[0]<<"\t "<<desviacion_estandar(MFLOPS)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\n";
-  
+
 }
 
 double desviacion_estandar(std::vector<double> & MFLOPS)
