@@ -23,17 +23,17 @@ void multiplicacion_directa(std::vector<double> & A,std::vector<double> & B,std:
 void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb, int Nmax)
 {
     int N=Nmax/Nb;
-    for(int block_i=1;block_i<N+1;block_i++)
+    for(int block_i=0;block_i<N;block_i++)
     {
-        for(int block_j=1;block_j<N+1;block_j++)
+        for(int block_j=0;block_j<N;block_j++)
         {
-            for(int block_k=1;block_k<N+1;block_k++)
+            for(int block_k=0;block_k<N;block_k++)
             {
-                for(int i=(block_i-1)*Nb;i<block_i*Nb;i++)
+	      for(int i=block_i*Nb;i<(block_i+1)*Nb;i++)
                 {
-                    for(int j=(block_j-1)*Nb;i<block_j*Nb;j++)
+		  for(int j=block_j*Nb;i<(block_j+1)*Nb;j++)
                     {
-                        for(int k=(block_k-1)*Nb;i<block_k*Nb;k++)
+		      for(int k=block_k*Nb;i<(block_k+1)*Nb;k++)
                         {
                             c[i*Nmax+j]+=a[i*Nmax+k]*b[Nmax*k+j];
                         }
