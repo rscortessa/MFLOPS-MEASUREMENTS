@@ -20,29 +20,36 @@ void multiplicacion_directa(std::vector<double> & A,std::vector<double> & B,std:
     }
 
 }
-void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb, int Nmax)
+void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb)
 {
-    int N=Nmax/Nb;
-    for(int block_i=0;block_i<N;block_i++) 
+    int M=std::sqrt(a.size());
+    if( Nb > M )
     {
-        for(int block_j=0;block_j<N;block_j++)
+        multiplicacion_directa(a,b,c);
+    }
+    else
+    {
+    int N=M/Nb;
+
+     for(int block_i=0;block_i<N;block_i++)
         {
-            for(int block_k=0;block_k<N;block_k++)
-            {
-	      for(int i=block_i*Nb;i<(block_i+1)*Nb;i++) //block_i_max=N-1  (block_i_max+1)*Nb=Nmax^2
-                {
-		  for(int j=block_j*Nb;j<(block_j+1)*Nb;j++)//block_j_max=N-1  (block_j_max+1)*Nb=Nmax^2
-                    {
-		      for(int k=block_k*Nb;k<(block_k+1)*Nb;k++)//block_k_max=N-1   (block_k_max+1)*Nb=Nmax^2
-                        {
-                            c[i*Nmax+j]+=a[i*Nmax+k]*b[Nmax*k+j];
-                        }
-                    }
-                }
-
-            }
-        }
-
+             for(int block_j=0;block_j<N;block_j++)
+             {
+                 for(int block_k=0;block_k<N;block_k++)
+                 {
+                      for(int i=block_i*Nb;i<(block_i+1)*Nb;i++)
+                      {
+                          for(int j=block_j*Nb;j<(block_j+1)*Nb;j++)
+                          {
+                               for(int k=block_k*Nb;k<(block_k+1)*Nb;k++)
+                              {
+                            c[i*M+j]+=a[i*M+k]*b[M*k+j];
+                              }
+                         }
+                     }
+                 }
+             }
+         }
     }
 
 
