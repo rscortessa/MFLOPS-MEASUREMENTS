@@ -4,7 +4,7 @@
 #include <Eigen/Dense>
 #include <cmath>
 
-void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & C)
+void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, Eigen::MatrixXd & C)
 {
     C=2.0*A*B;
 }
@@ -20,10 +20,9 @@ void multiplicacion_directa(std::vector<double> & A,std::vector<double> & B,std:
     }
 
 }
-void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb)
+void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb, int Nmax)
 {
-    int M=sqrt(a.size());
-    int N=M/Nb;
+    int N=Nmax/Nb;
     for(int block_i=1;block_i<N+1;block_i++)
     {
         for(int block_j=1;block_j<N+1;block_j++)
@@ -36,7 +35,7 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
                     {
                         for(int k=(block_k-1)*Nb;i<block_k*Nb;k++)
                         {
-                            c[i,j]+=a[i*M+k]*b[M*k+j];
+                            c[i*Nmax+j]+=a[i*Nmax+k]*b[Nmax*k+j];
                         }
                     }
                 }

@@ -32,12 +32,12 @@ void transpuesta_directa(std::vector<double> &A, int N)
     for(int ii=0; ii<N; ++ii){
         for(int jj=0; jj<N; ++jj)
         {
-            A[ii*N+jj]=(A[jj*N+ii])*(e);
+            A[ii*N+jj]=(A[jj*N+ii])*(2.0);
         }
     }
 }
 
-void transpuesta_eigen(const Eigen::MatrixXd & A)
+void transpuesta_eigen(Eigen::MatrixXd & A)
 {
   A=A.transpose();
 }

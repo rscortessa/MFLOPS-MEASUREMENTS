@@ -4,34 +4,42 @@
 #include <random>
 #include<iostream>
 #include<fstream>
-
+#include<cmath>
+#include"Multiplicaciones.h"
 double desviacion_estandar(std::vector<double> & MFLOPS);
 void fill_random_vector(std::vector<double> & v);
 
 
-int main()
+int main(int argc,char**argv)
 {
   float real_time, proc_time,mflops;
   long long flpops;
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  int cuentas=100;
+  int cuentas=1;
  //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
  std::vector<double> PROC_TIME(cuentas+1,0);
 
  //En caso de que se vaya a variar el tamaño del arreglo, el for debe empezar en la siguiente linea.
- int Nmax=5;
+ int Nmax=1000; //std::atoi(argv[1]);
  //Se inicializan los arreglos a utilizar std::vector<double> A(N,0), Eigen::MatrixXd as(N,N) o arma::mat a(N,N,arma::fill::ones);
  std::vector<double> a(Nmax*Nmax,0);
  std::vector<double> b(Nmax*Nmax,0);
  std::vector<double> c(Nmax*Nmax,0);
+ fill_random_vector(a);
+ fill_random_vector(b);
 
-
+ for(int i=0;i<1;i++)
+	{
+	  int Nb=std::pow(2,i);
+	  
  for(int i=0; i<cuentas;i++)
     {
+     
+      //if(Nmax*Nmax<Nb) exit(0);
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
 	{ 
 	  printf("Could not initialise PAPI_flops \n");
@@ -40,7 +48,8 @@ int main()
 	  exit(1);
 	}
       //Se coloca el código a medir...  
-      //multiplicacion_directa(a,b,c,Nmax);
+      multiplicacion_blocking(a,b,c,Nb,Nmax);
+      
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
 	{    
 	  printf("retval: %d\n", retval);
@@ -57,7 +66,7 @@ int main()
       std::ofstream trash ("Data.txt");
       double aux_sum=0.0;
       // Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      for(int i=0;i<c.size();i++)
+      for(int i=0;i<Nmax*Nmax;i++)
       {
         aux_sum += c[i];
     }
@@ -67,10 +76,11 @@ int main()
       std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<std::endl;
       std::cout<<MFLOPS[0]<<"\t "<<desviacion_estandar(MFLOPS)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\n";
 
+ 
 }
-
-double desviacion_estandar(std::vector<double> & MFLOPS)
-{
+}
+ double desviacion_estandar(std::vector<double> & MFLOPS)
+ {
   double sigma=0;
   double N=MFLOPS.size();
   for(int i=1;i<N;i++)
