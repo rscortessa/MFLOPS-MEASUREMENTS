@@ -17,22 +17,23 @@ int main(int argc,char**argv)
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  int cuentas=1;
+  int cuentas=5;
  //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
  std::vector<double> PROC_TIME(cuentas+1,0);
 
  //En caso de que se vaya a variar el tamaño del arreglo, el for debe empezar en la siguiente linea.
- int Nmax=1000; //std::atoi(argv[1]);
+ int Nmax=std::atoi(argv[1]);
  //Se inicializan los arreglos a utilizar std::vector<double> A(N,0), Eigen::MatrixXd as(N,N) o arma::mat a(N,N,arma::fill::ones);
  std::vector<double> a(Nmax*Nmax,0);
  std::vector<double> b(Nmax*Nmax,0);
  std::vector<double> c(Nmax*Nmax,0);
  fill_random_vector(a);
  fill_random_vector(b);
-
- for(int i=0;i<1;i++)
+ 
+ std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"N_B"<<std::endl;
+ for(int i=0;i<13;i++)
 	{
 	  int Nb=std::pow(2,i);
 	  
@@ -48,7 +49,7 @@ int main(int argc,char**argv)
 	  exit(1);
 	}
       //Se coloca el código a medir...  
-      multiplicacion_blocking(a,b,c,Nb,Nmax);
+      multiplicacion_blocking(a,b,c,Nb);
       
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
 	{    
@@ -73,8 +74,7 @@ int main(int argc,char**argv)
       trash << aux_sum ;
       trash.close();
     }
-      std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<std::endl;
-      std::cout<<MFLOPS[0]<<"\t "<<desviacion_estandar(MFLOPS)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\n";
+ std::cout<<MFLOPS[0]<<"\t "<<desviacion_estandar(MFLOPS)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nb<<std::endl;
 
  
 }

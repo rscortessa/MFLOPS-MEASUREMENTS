@@ -8,7 +8,7 @@ void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, 
 {
     C=2.0*A*B;
 }
-void multiplicacion_directa(std::vector<double> & A,std::vector<double> & B,std::vector<double> & C, int N)
+void multiplicacion_directa(const std::vector<double> & A,const std::vector<double> & B,std::vector<double> & C, int N)
 {
     for(int i=0;i<N*N;i++)
     {
@@ -25,7 +25,7 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
     int M=std::sqrt(a.size());
     if( Nb > M )
     {
-        multiplicacion_directa(a,b,c);
+      multiplicacion_directa(a,b,c,M);
     }
     else
     {
