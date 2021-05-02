@@ -9,7 +9,7 @@ LIB_DEPS=-lpapi -larmadillo
 	done
 
 blocking.data:Performance_blocking.x
-	for m in 20 40 ; do \
+	for m in 2048 4096 ; do \
 		for n in 0 3 ; do \
 			./$<O$$n $$m  > $@O$$n-$$m ; \
 		done ; \
