@@ -20,16 +20,16 @@ LIB_DEPS=-lpapi -larmadillo
 	$(CXX) $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@ 
 
 blocking_mult.txt: Performance_blocking3.x Performance_blocking0.x  #this creates 4 txt files 
-	./$< 2048 1> O3-2048$@
-	./$< 4096 1> O3-4096$@
-	./$(word 2,$^) 2048 1> O0-2048$@
-	./$(word 2,$^) 4096 1> O0-4096$@
+	./$< 2048 1 > O3-2048$@
+	./$< 4096 1 > O3-4096$@
+	./$(word 2,$^) 2048 1 > O0-2048$@
+	./$(word 2,$^) 4096 1 > O0-4096$@
 
 blocking_trans.txt: Performance_blocking3.x Performance_blocking0.x 
 	./$< 2048 0> O3-2048$@
 	./$< 4096 0> O3-4096$@
-	./$(word 2,$^) 2048 0> O0-2048$@
-	./$(word 2,$^) 4096 0> O0-4096$@
+	./$(word 2,$^) 2048 0 > O0-2048$@
+	./$(word 2,$^) 4096 0 > O0-4096$@
 	
 blocking.graph:plot_blocking.gp blocking_trans.txt blocking_mult.txt
 	gnuplot plot_blocking.gp
