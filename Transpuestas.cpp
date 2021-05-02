@@ -25,19 +25,19 @@
 
 void transpuesta_armadillo(arma::Mat<double> & A)
 {
-    A=2.3*A.t();
+    A=1.0*A.t();
 }
 void transpuesta_directa(std::vector<double> &A, int N)
 {
     for(int ii=0; ii<N; ++ii){
         for(int jj=0; jj<N; ++jj)
         {
-            A[ii*N+jj]=(A[jj*N+ii])*(2.0);
+            A[ii*N+jj]=(A[jj*N+ii])*(1.0);
         }
     }
 }
 
 void transpuesta_eigen(Eigen::MatrixXd & A)
 {
-  A=A.transpose();
+  A=1.0*A.transpose();
 }
