@@ -74,7 +74,8 @@ int main(int argc,char**argv)
       trash << aux_sum ;
       trash.close();
     }
- std::cout<<MFLOPS[0]<<"\t "<<desviacion_estandar(MFLOPS)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nb<<std::endl;
+ //peak 18.64 Gflops
+ std::cout<<MFLOPS[0]/(18640)<<"\t "<<desviacion_estandar(MFLOPS)/(18640)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nb<<std::endl;
 
  
 }
