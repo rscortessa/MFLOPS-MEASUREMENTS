@@ -12,6 +12,7 @@ void fill_random_vector(std::vector<double> & v);
 
 int main(int argc,char**argv)
 {
+  int Ronald = std::atoi(argv[2]) 
   float real_time, proc_time,mflops;
   long long flpops;
   float ireal_time, iproc_time, imflops;
@@ -49,7 +50,14 @@ int main(int argc,char**argv)
 	  exit(1);
 	}
       //Se coloca el código a medir...  
-      multiplicacion_blocking(a,b,c,Nb);
+	 if( Ronald ==1)
+	 {
+     		 multiplicacion_blocking(a,b,c,Nb);
+	 } 
+	 if( Ronald ==0)
+	 {
+		 transpuesta_blocking(a,b,c,Nb);
+	 }
       
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
 	{    
