@@ -6,7 +6,7 @@
 
 void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, Eigen::MatrixXd & C)
 {
-    C=2.0*A*B;
+    C=A*B;
 }
 void multiplicacion_directa(const std::vector<double> & A,const std::vector<double> & B,std::vector<double> & C, int N)
 {
@@ -57,5 +57,5 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
 
 void multplicacion_armadillo(arma::Mat<double> & A,arma::Mat<double>& B,arma::Mat<double> & C)
 {
-  C=2.0*A*B;
+  C=A*B;
 }
