@@ -1,9 +1,8 @@
 QUE FALTA HACER código
--- Performance blocking para la transpuesta
 -- falta entero el 1.5.2
 -- falta makefile
   *Para 1.5.1
-      saldrán 4 archivos de texto
+      saldrán 8 archivos de texto
       EJEMPLO ARCHIVO DE TEXTO 
       
       -------------------------MULT--------------------------------------------------
