@@ -1,7 +1,7 @@
 #include <armadillo>
 #include <Eigen/Dense>
 #include <cmath>
-#incude "Transpuestas.h"
+#include "Transpuestas.h"
   void transpuesta_blocking(std::vector<double> & A, std::vector<double>&ABT, int P)
 {
     //Segundo, subdividimos la matriz A en pequeños bloques dentro de la matriz
