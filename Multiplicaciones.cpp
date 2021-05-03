@@ -26,7 +26,7 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
     int M=std::sqrt(a.size());
     if( Nb > M )
     {
-      multiplicacion_directa(a,b,c,M);
+      multiplicacion_directa(a,b,c);
     }
     else
     {
