@@ -1,7 +1,7 @@
 
 MATRIX_SIZE=0
 OPTIM=0
-TO_MEASURE=0 # 1 if we measure multiplications, 0 if we meassure transposition
+TO_MEASURE=0
 
 O$(MATRIX_SIZE)_$(OPTIM)_$(TO_MEASURE)blocking: Performance_blocking.cpp #Regla de compilación para archivo individual
 	$(CXX) $(FIXED_DEPS) $< $(LIB_DEPS) -O$(OPTIM) -o $@.x  
@@ -24,8 +24,8 @@ blocking.txt: Performance_blocking3.x Performance_blocking0.x  #this creates 4 t
 	./$< 4096 1 > O3_4096_1$@
 	./$(word 2,$^) 2048 1 > O0-2048_1$@
 	./$(word 2,$^) 4096 1 > O0-4096_1$@
-	./$< 2048 0 > O3_2048_0$@
-	./$< 4096 0 > O3_4096_0$@
+	./$< 2048 0 > O3_2048$@
+	./$< 4096 0 > O3_4096$@
 	./$(word 2,$^) 2048 0 > O0_2048_0$@
 	./$(word 2,$^) 4096 0 > O0_4096_0$@
 	
