@@ -4,7 +4,7 @@ OPTIM=0
 TO_MEASURE=0
 
 $(MATRIX_SIZE)_$(OPTIM)_$(TO_MEASURE)blocking: Performance_blocking.cpp #Regla de compilación para archivo individual
-	$(CXX) $(FIXED_DEPS) $< $(LIB_DEPS) -O$(OPTIM) -o $@.x  
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -O$(OPTIM) -o $@.x  
 	./ $@.x $(MATRIX_SIZE) $(TO_MEASURE) > $@.txt
 	
 all: blocking.graph 
@@ -15,10 +15,10 @@ M_1=16;
 M_2=32;
 
 %0.x : %.cpp $(FIXED_DEPS)	
-	$(CXX) $(FIXED_DEPS) $< $(LIB_DEPS) -o $@   
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -o $@   
 		
 %3.x : %.cpp $(FIXED_DEPS)	
-	$(CXX) $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@ 
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@ 
 
 blocking.txt: Performance_blocking3.x Performance_blocking0.x  #this creates 8 txt files concerning the performance of the blocking algorithm for diferent matrix sizes,  
 	./$< $(M_1) 1 > O3_$(M_1)_1$@				#compilation flags, and operations like multiplication and transpose
