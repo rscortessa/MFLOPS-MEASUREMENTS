@@ -6,6 +6,7 @@
 #include<fstream>
 #include<cmath>
 #include"Multiplicaciones.h"
+#include"transpuestas.h"
 double desviacion_estandar(std::vector<double> & MFLOPS);
 void fill_random_vector(std::vector<double> & v);
 
