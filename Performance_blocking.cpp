@@ -57,7 +57,7 @@ int main(int argc,char**argv)
 	 } 
 	 if( Ronald ==0)
 	 {
-		 transpuesta_blocking(a,b,c,Nb);
+		 transpuesta_blocking(a,c,Nb);
 	 }
       
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
