@@ -29,7 +29,7 @@ blocking.txt: Performance_blocking3.x Performance_blocking0.x  #this creates 4 t
 	./$(word 2,$^) 2048 0 > O0_2048_0$@
 	./$(word 2,$^) 4096 0 > O0_4096_0$@
 	
-blocking.graph:plot_blocking.gp blocking_trans.txt blocking_mult.txt
+blocking.graph:plot_blocking.gp blocking.txt
 	gnuplot plot_blocking.gp
 
 
