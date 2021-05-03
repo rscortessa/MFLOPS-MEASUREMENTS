@@ -12,7 +12,7 @@ void fill_random_vector(std::vector<double> & v);
 
 int main(int argc,char**argv)
 {
-  int Ronald = std::atoi(argv[2]) 
+  int Ronald = std::atoi(argv[2]);
   float real_time, proc_time,mflops;
   long long flpops;
   float ireal_time, iproc_time, imflops;
