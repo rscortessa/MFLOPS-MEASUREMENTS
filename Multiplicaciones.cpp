@@ -8,8 +8,9 @@ void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, 
 {
     C=A*B;
 }
-void multiplicacion_directa(const std::vector<double> & A,const std::vector<double> & B,std::vector<double> & C, int N)
+void multiplicacion_directa(const std::vector<double> & A,const std::vector<double> & B,std::vector<double> & C)
 {
+    int N =std::sqrt(C.size());
     for(int i=0;i<N*N;i++)
     {
         for(int j=0;j<N;j++)
