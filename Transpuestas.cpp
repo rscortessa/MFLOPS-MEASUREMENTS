@@ -1,12 +1,20 @@
 #include <armadillo>
 #include <Eigen/Dense>
 #include <cmath>
-  void transpuesta_blocking(std::vector<double> & A, std::vector<double>&ABT, const int N, int P)
+#include "Transpuestas.h"
+  void transpuesta_blocking(std::vector<double> & A, std::vector<double>&ABT, int P)
 {
     //Segundo, subdividimos la matriz A en pequeños bloques dentro de la matriz
     //de dimensión P, con el fin de trasponer estos pequeños bloques dentro de
     //la matriz A e internamente transponer los bloques
 
+    int N=std::sqrt(A.size());
+    if( P > N )
+    {
+      transpuesta_directa(A);
+    }
+    else
+    {
     for(int ii=0; ii<N; ii+=P)
     {
         for(int jj=0; jj<N; jj+=P)
@@ -21,14 +29,16 @@
             }
         }
     }
+    }
 }
 
 void transpuesta_armadillo(arma::Mat<double> & A)
 {
     A=1.0*A.t();
 }
-void transpuesta_directa(std::vector<double> &A, int N)
+void transpuesta_directa(std::vector<double> &A)
 {
+  int N=std::sqrt(A.size());
     for(int ii=0; ii<N; ++ii){
         for(int jj=0; jj<N; ++jj)
         {
