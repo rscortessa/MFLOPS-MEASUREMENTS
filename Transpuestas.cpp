@@ -9,7 +9,7 @@
     //la matriz A e internamente transponer los bloques
 
     int N=std::sqrt(A.size());
-    if( P > N )
+    if( std::fmod(N,P)!=0 )
     {
       transpuesta_directa(A);
     }
@@ -36,6 +36,7 @@ void transpuesta_armadillo(arma::Mat<double> & A)
 {
     A=1.0*A.t();
 }
+
 void transpuesta_directa(std::vector<double> &A)
 {
   int N=std::sqrt(A.size());
