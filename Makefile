@@ -54,4 +54,4 @@ blocking.graph:plot_blocking.gp blocking.txt
 
 .PHONY:
 clean:
-	rm *.x *.o 
+	rm *.x *.o
