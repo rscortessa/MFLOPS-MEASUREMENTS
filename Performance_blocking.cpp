@@ -19,7 +19,7 @@ int main(int argc,char**argv)
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  int cuentas=5;
+  int cuentas=1;
  //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
@@ -35,7 +35,7 @@ int main(int argc,char**argv)
  fill_random_vector(b);
  
  std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"N_B"<<std::endl;
- for(int i=0;i<13;i++)
+ for(int i=10;i<13;i++)
 	{
 	  int Nb=std::pow(2,i);
 	  
