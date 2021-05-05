@@ -35,7 +35,7 @@ int main(int argc,char**argv)
  fill_random_vector(b);
  
  std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"N_B"<<std::endl;
- for(int i=0;i<13;i++)
+ for(int i=10;i<13;i++)
 	{
 	  int Nb=std::pow(2,i);
 	  
