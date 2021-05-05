@@ -19,7 +19,7 @@ int main(int argc,char**argv)
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  int cuentas=5;
+  int cuentas=1;
 //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
@@ -52,8 +52,8 @@ int main(int argc,char**argv)
 
 
 
- //for(int i=0; i<cuentas;i++)
-    //{
+ for(int i=0; i<cuentas;i++)
+    {
 
       //if(Nmax*Nmax<Nb) exit(0);
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
@@ -103,7 +103,7 @@ int main(int argc,char**argv)
     }
       trash << aux_sum ;
       trash.close();
-    //}
+    }
  //peak 18.64 Gflops
  std::cout<<MFLOPS[0]/(18640)<<"\t "<<desviacion_estandar(MFLOPS)/(18640)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nb<<std::endl;
  REAL_TIME[0]=0;
