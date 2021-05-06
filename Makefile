@@ -2,7 +2,7 @@ M_S=0  #Matrix size
 T_M=0 #code To Measure, 1 is multiplication, 0 is transpose
 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 
-LIB_DEPS=-lpapi -larmadillo -leigen
+LIB_DEPS=-lpapi -larmadillo
 
 %0.x : %.cpp $(FIXED_DEPS)	
 	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -o $@   
