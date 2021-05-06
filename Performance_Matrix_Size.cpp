@@ -50,7 +50,7 @@ int main(int argc,char**argv)
 
         Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
         Eigen::MatrixXd BE = Eigen::MatrixXd::Random(Nmax,Nmax);
-	Eigen::MatrixXd CE (Nmax,Nmax) = Eigen::MatrixXd::Zero();
+	Eigen::MatrixXd CE (Nmax,Nmax) = Eigen::MatrixXd::Zero(Nmax, Nmax);
 	 
 
 
