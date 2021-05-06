@@ -52,8 +52,8 @@ int main(int argc,char**argv)
 
 
 
- for(int i=0; i<cuentas;i++)
-    {
+// for(int i=0; i<cuentas;i++)
+//   {
 
       //if(Nmax*Nmax<Nb) exit(0);
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
@@ -89,23 +89,23 @@ int main(int argc,char**argv)
       MFLOPS[0]+=mflops/cuentas;
       REAL_TIME[0]+=real_time/cuentas;
       PROC_TIME[0]+=proc_time/cuentas;
-      MFLOPS[i+1]=mflops;
-      REAL_TIME[i+1]=real_time;
-      PROC_TIME[i+1]=proc_time;
+      MFLOPS[1]=mflops;
+      REAL_TIME[1]=real_time;
+      PROC_TIME[1]=proc_time;
 
       // En este espacio se imprime algún resultado del código
       std::ofstream trash ("Data.txt");
       double aux_sum=0.0;
       // Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      for(int i=0;i<Nmax*Nmax;i++)
+      for(int l=0;l<Nmax*Nmax;l++)
       {
-        aux_sum += c[i];
+        aux_sum += c[l];
     }
       trash << aux_sum ;
       trash.close();
-    }
+ //   }
  //peak 18.64 Gflops
- std::cout<<MFLOPS[0]/(18640)<<"\t "<<desviacion_estandar(MFLOPS)/(18640)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nb<<std::endl;
+ std::cout<<MFLOPS[0]/(18640)<<"\t "<<desviacion_estandar(MFLOPS)/(18640)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nmax<<std::endl;
  REAL_TIME[0]=0;
  MFLOPS[0]=0;
  PROC_TIME[0]=0;
