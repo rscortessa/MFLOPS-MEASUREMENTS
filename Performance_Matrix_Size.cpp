@@ -70,11 +70,11 @@ int main(int argc,char**argv)
 	 }
 	 if( Ronald ==1)
 	 {
-         multplicacion_armadillo(AA,BA,CA,Nmax);
+         	multplicacion_armadillo(AA,BA,CA,Nmax);
 	 }
-     if( Ronald ==2)
+         if( Ronald ==2)
 	 {
-     		 transpuesta_eigen(AE)
+     		 transpuesta_eigen(AE);
 	 }
 	 if( Ronald ==3)
 	 {
