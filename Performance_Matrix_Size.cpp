@@ -46,7 +46,7 @@ int main(int argc,char**argv)
 
         arma::mat AA(Nmax, Nmax, arma::fill::randu);
         arma::mat BA(Nmax, Nmax, arma::fill::randu);
-	arma::mat CA(Nmax, Namx);
+	arma::mat CA(Nmax, Nmax);
 
         Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
         Eigen::MatrixXd BE = Eigen::MatrixXd::Random(Nmax,Nmax);
@@ -69,11 +69,11 @@ int main(int argc,char**argv)
       //Se coloca el código a medir...
 	 if( Ronald ==0)
 	 {
-     		 multiplicacion_eigen(AE,BE,CE,Nmax);
+     		 multiplicacion_eigen(AE,BE,CE);
 	 }
 	 if( Ronald ==1)
 	 {
-         	multplicacion_armadillo(AA,BA,CA,Nmax);
+         	multplicacion_armadillo(AA,BA,CA);
 	 }
          if( Ronald ==2)
 	 {
