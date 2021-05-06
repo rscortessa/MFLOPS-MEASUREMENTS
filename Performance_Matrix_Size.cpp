@@ -46,11 +46,11 @@ int main(int argc,char**argv)
 
         arma::mat AA(Nmax, Nmax, arma::fill::randu);
         arma::mat BA(Nmax, Nmax, arma::fill::randu);
-	arma::mat CA(Nmax, Nmax);
+	arma::mat CA(Nmax, Nmax); CA.zeros();
 
         Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
         Eigen::MatrixXd BE = Eigen::MatrixXd::Random(Nmax,Nmax);
-	Eigen::MatrixXd CE (Nmax,Nmax);
+	Eigen::MatrixXd CE (Nmax,Nmax) = Eigen::MatrixXd::Ones(rows,cols);
 	 
 
 
