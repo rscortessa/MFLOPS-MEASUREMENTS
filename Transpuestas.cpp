@@ -32,9 +32,9 @@
     }
 }
 
-void transpuesta_armadillo(arma::Mat<double> & A)
+void transpuesta_armadillo(arma::Mat<double> & AA)
 {
-    A=1.0*A.t();
+    AA=1.0*AA.t();
 }
 
 void transpuesta_directa(std::vector<double> &A)
@@ -48,7 +48,7 @@ void transpuesta_directa(std::vector<double> &A)
     }
 }
 
-void transpuesta_eigen(Eigen::MatrixXd & A)
+void transpuesta_eigen(Eigen::MatrixXd & AE)
 {
-  A=1.0*A.transpose();
+  AE=1.231*AE.transpose().eval();
 }

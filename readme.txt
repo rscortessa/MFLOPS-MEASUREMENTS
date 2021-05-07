@@ -1,6 +1,10 @@
 QUE FALTA HACER código
--- falta entero el 1.5.2
--- falta makefile
+-- Comentar con el fin de explicar las partes de cada código
+-- Realizar las mediones de la transpuesta por blocking, usando armadillo 
+   y eigen
+-- Completar detalles en el makefile y archivo '.gp' para que grafique los
+   datos relacionados con las mediciones del Performane_Matrix_Size.cpp
+-- REalizar las pertinentes gráficas
   *Para 1.5.1
       saldrán 8 archivos de texto
       EJEMPLO ARCHIVO DE TEXTO 
@@ -9,4 +13,8 @@ QUE FALTA HACER código
       MFLOPS | Desv(MFLOPS) | TIEMPO PROC | Desv(T Proc) | T REAL | desv(T REAL) | Nb 
       
 QUE FALTA HACER INFORME
---
+-- Terminar detalles experimentales o de procedimeinto
+-- Exponer los resultados y analizarlos
+-- Conclusiones y resumen
+
+	-- Das ist alles
