@@ -25,13 +25,14 @@ Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta el archi
 
 block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt	#Block_graph es usado como objetivo para crear las gráficas creadas en el archivo plot.gp
 	gnuplot plot.gp
-	mv file1.pdf $(MATRIX_SIZE)_Mflops.pdf				#En el target plot.gp se crean las gráficas para estudiar la performance del blocking con los nombres file1.pdf y file2.pdf, 
-	mv file2.pdf $(MATRIX_SIZE)_Time.pdf				#es por eso que con los nombres file1.pdf y file2.pdf, es por eso que se les cambia el nombre según corresponda
+	mv file1.pdf blocking_$(MATRIX_SIZE)_Mflops.pdf				#En el target plot.gp se crean las gráficas para estudiar la performance del blocking con los nombres file1.pdf y file2.pdf, 
+	mv file2.pdf blocking_$(MATRIX_SIZE)_Time.pdf				#es por eso que con los nombres file1.pdf y file2.pdf, es por eso que se les cambia el nombre según corresponda
 
 size_graph.pdf: Performance_Matrix_Size0.txt Performance_Matrix_Size3.txt 	#En el target size_graph se crean las gráficas para estudiar el performance según el tamaño de la matriz
 	gnuplot plot.gp
-=======
->>>>>>> d1be79f48bfbb57911e0c3c9926d602ac0bf0cf9
+	mv file1.pdf Matrix_$(MATRIX_SIZE)_Mflops.pdf				#En el target plot.gp se crean las gráficas para estudiar la performance del blocking con los nombres file1.pdf y file2.pdf, 
+	mv file2.pdf Matrix_$(MATRIX_SIZE)_Time.pdf				#es por eso que con los nombres file1.pdf y file2.pdf, es por eso que se les cambia el nombre según corresponda
+
 .PHONY:
 clean:								#Clean se usa para remover todos los archivos creados en este make
 	rm *.x *.o
