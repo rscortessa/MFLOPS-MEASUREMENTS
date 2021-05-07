@@ -50,5 +50,5 @@ void transpuesta_directa(std::vector<double> &A)
 
 void transpuesta_eigen(Eigen::MatrixXd & AE)
 {
-  AE=1.0*AE.transpose();
+  AE=1.231*AE.transpose().eval();
 }
