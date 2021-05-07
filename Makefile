@@ -18,8 +18,8 @@ Performance_blocking3.txt: Performance_blocking3.x
 
 block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt
 	gnuplot plot.gp
-	mv file1.pdf $(MATRIX_SIZE)_Mflops.pdf
-	mv file2.pdf $(MATRIX_SIZE)_Time.pdf
+	mv file1.pdf $(MATRIX_SIZE)_blocking_mflops.pdf
+	mv file2.pdf $(MATRIX_SIZE)_blocking_time.pdf
 .PHONY:
 clean:
 	rm *.x *.o
