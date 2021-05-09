@@ -26,7 +26,6 @@ int main(int argc,char**argv)
  	std::vector<double> MFLOPS(cuentas+1,0);
  	std::vector<double> REAL_TIME(cuentas+1,0);
  	std::vector<double> PROC_TIME(cuentas+1,0);
-	std::vector<double> c(Nmat*Nmat,0);
 
 
 	 std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"Nmax"<<std::endl;
@@ -119,6 +118,7 @@ int main(int argc,char**argv)
       			std::ofstream trash ("Delete_me_please.txt");
       			double aux_sum=0.0;
       			// Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
+			std::vector<double> c(Nmax*Nmax,0);
       			for(auto x: c)
       			{	
         		aux_sum += x;
