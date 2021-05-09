@@ -48,7 +48,7 @@ void transpuesta_directa(std::vector<double> &A)
     }
 }
 
-void transpuesta_eigen(Eigen::MatrixXd & AE)
+void transpuesta_eigen(const Eigen::MatrixXd & AE, Eigen::MatrixXd & AET)
 {
-  AE=1.231*AE.transpose().eval();
+  AET=1.231*AE.transpose().eval();
 }
