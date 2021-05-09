@@ -79,7 +79,7 @@ int main(int argc,char**argv)
       			// Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
       			for(auto x : c)
      			{
-       		 		aux_sum += c[i];
+       		 		aux_sum += x;
    			}
       			trash << aux_sum ;
       			trash.close();
