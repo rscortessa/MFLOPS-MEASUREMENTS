@@ -59,10 +59,11 @@ int main(int argc,char**argv)
 	 		}
          		if( William == 2 )
 	 		{
-			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);	
-     			 	transpuesta_eigen(AE);
+			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
+				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
+     			 	transpuesta_eigen(AE,AET);
 	 		}
-	 		if( William ==3 )
+	 		if( William == 3 )
 	 		{
 				arma::mat AA(Nmax, Nmax, arma::fill::randu);
 			 	transpuesta_armadillo(AA);
