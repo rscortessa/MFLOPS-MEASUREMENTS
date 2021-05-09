@@ -7,17 +7,17 @@ show style data
 set out "file1.pdf"
 set title "Mflops vs Nb"
 show bars
-plot "pdfdata/Performance_blocking0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/Performance_blocking0.txt" u 7:1:2 w lines title "O0" lt rgb "navy", \
-"pdfdata/Performance_blocking3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/Performance_blocking3.txt" u 7:1:2 with lines title "O3" lt rgb "red" 
+plot "pdfdata/aux0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"pdfdata/aux0.txt" u 7:1:2 w lines title "O0" lt rgb "navy", \
+"pdfdata/aux3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"pdfdata/aux3.txt" u 7:1:2 with lines title "O3" lt rgb "red" 
 unset output
 set output "file2.pdf"
 set xlabel "Tamaño del bloque N_b"; set ylabel "tiempo(s)"
 set title "Time vs Nb"
-plot "pdfdata/Performance_blocking0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/Performance_blocking0.txt" u 7:5:6 w lines title "O0" lt rgb "navy", \
-"pdfdata/Performance_blocking3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/Performance_blocking3.txt" u 7:5:6 with lines title "O3" lt rgb "red" 
+plot "pdfdata/aux0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"pdfdata/aux0.txt" u 7:5:6 w lines title "O0" lt rgb "navy", \
+"pdfdata/aux3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"pdfdata/aux3.txt" u 7:5:6 with lines title "O3" lt rgb "red" 
 unset output
 unset terminal
