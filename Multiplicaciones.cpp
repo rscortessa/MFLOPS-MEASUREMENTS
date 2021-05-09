@@ -32,17 +32,17 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
     {
     int N=M/Nb;         //Se calcula el número de bloques que se tendrán en la función
 
-     for(int block_i=0;block_i<N;block_i++)         //Se ubica el bloque según las filas en a y en c
+     for(int bi=0;bi<N;bi++)         //Se ubica el bloque según las filas en a y en c
         {
-             for(int block_j=0;block_j<N;block_j++)         //Se ubica el bloque según las columnas de b y c
+             for(int bj=0;bj<N;bj++)         //Se ubica el bloque según las columnas de b y c
              {
-                 for(int block_k=0;block_k<N;block_k++)         //Se ubica el bloque para la multiplicación de a y b
+                 for(int bk=0;bk<N;bk++)         //Se ubica el bloque para la multiplicación de a y b
                  {
-                      for(int i=block_i*Nb;i<(block_i+1)*Nb;i++)        //Se recorren las filas del bloque 
+                      for(int i=bi*Nb;i<(bi+1)*Nb;i++)        //Se recorren las filas del bloque 
                       {
-                          for(int j=block_j*Nb;j<(block_j+1)*Nb;j++)        //Se recorren las columnas del bloque 
+                          for(int j=bj*Nb;j<(bj+1)*Nb;j++)        //Se recorren las columnas del bloque 
                           {
-                               for(int k=block_k*Nb;k<(block_k+1)*Nb;k++)   	    //Se emplea k para implementar el algorítmo de la multiplicación por blocking
+                               for(int k=bk*Nb;k<(bk+1)*Nb;k++)   	    //Se emplea k para implementar el algorítmo de la multiplicación por blocking
                               {
                                 c[i*M+j]+=a[i*M+k]*b[M*k+j];        //Se implementa el algorítmo de multiplicación
                               }
@@ -51,7 +51,7 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
                  }
              }
          }
-    }
+     }
 
 
 }
