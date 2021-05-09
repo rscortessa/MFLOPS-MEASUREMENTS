@@ -26,6 +26,7 @@ int main(int argc,char**argv)
  	std::vector<double> MFLOPS(cuentas+1,0);
  	std::vector<double> REAL_TIME(cuentas+1,0);
  	std::vector<double> PROC_TIME(cuentas+1,0);
+	std::vector<double> c(Nmat*Nmat,0);
 
 
 	 std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"Nmax"<<std::endl;
