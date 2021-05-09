@@ -14,7 +14,7 @@ void fill_random_vector(std::vector<double> & v);
 int main(int argc,char**argv)
 {
 	std::cout.precision(7); std::cout.setf(std::ios::scientific);
-	int Ronald = std::atoi(argv[2]);
+	int William = std::atoi(argv[2]); //Variable William determina que código será medido, 1 para multiplicación, 0 para transpuesta
   	float real_time, proc_time,mflops;
   	long long flpops;
   	float ireal_time, iproc_time, imflops;
@@ -36,11 +36,11 @@ int main(int argc,char**argv)
  	fill_random_vector(b); //Se llenan las matrices con números aleatorios
  
  	std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"N_B"<<std::endl;
- 	for(int i=0;i<13;i++)
+ 	for(int ii=0;ii<13;ii++)
 	{
-		  int Nb=std::pow(2,i);
+		  int Nb=std::pow(2,ii);
 		  
-		for(int i=0; i<cuentas;i++) 
+		for(int jj=0; jj<cuentas;jj++) 
   	 	{
      
       		//if(Nmax*Nmax<Nb) exit(0);
@@ -52,11 +52,11 @@ int main(int argc,char**argv)
 	 	 	exit(1);
 			}
       //Se coloca el código a medir...  
-		 	if( Ronald ==1)
+		 	if( William ==1)
 	 		{
      			 multiplicacion_blocking(a,b,c,Nb);
 	 		} 
-			 if( Ronald ==0)
+			if( William ==0)
 	 		{
 			 transpuesta_blocking(a,c,Nb);
 			 }
@@ -69,15 +69,15 @@ int main(int argc,char**argv)
       			MFLOPS[0]+=mflops/cuentas;
       			REAL_TIME[0]+=real_time/cuentas;
       			PROC_TIME[0]+=proc_time/cuentas;
-      			MFLOPS[i+1]=mflops;
-      			REAL_TIME[i+1]=real_time;
-      			PROC_TIME[i+1]=proc_time;
+      			MFLOPS[jj+1]=mflops;
+      			REAL_TIME[jj+1]=real_time;
+      			PROC_TIME[jj+1]=proc_time;
       
       			// En este espacio se imprime algún resultado del código
       			std::ofstream trash ("TRASH.txt");
       			double aux_sum=0.0;
       			// Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      			for(int i=0;i<Nmat*Nmat;i++)
+      			for(auto x : c)
      			{
        		 		aux_sum += c[i];
    			}
