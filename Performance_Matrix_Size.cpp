@@ -13,6 +13,7 @@ void fill_random_vector(std::vector<double> & v);
 
 int main(int argc,char**argv)
 {
+	std::cout.precision(7); std::cout.setf(std::ios::scientific);
 	int Nb=8 ; //optim size blocking
 	int William = std::atoi(argv[1]); //william determines the code to measure
 	float real_time, proc_time,mflops;
@@ -34,7 +35,7 @@ int main(int argc,char**argv)
 		for(int ii=0; ii<cuentas;ii++)
   		{
 
-     		 	//if(Nmax*Nmax<Nb) exit(0);
+     		 	//if(Nmax<Nb) exit(0);
      		 	if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
 			{
 		 		printf("Could not initialise PAPI_flops \n");
@@ -80,8 +81,10 @@ int main(int argc,char**argv)
 			if( William == 5 )
 			{
 				std::vector<double> a(Nmax*Nmax,0);
+				std::vector<double> b(Nmax*Nmax,0);
 				fill_random_vector(a);
-				transpuesta_blocking(a,Nb);
+				fill_random_vector(b);
+				transpuesta_blocking(a,b,Nb);
 			}
 			if( William == 6 )
 			{
@@ -96,7 +99,7 @@ int main(int argc,char**argv)
 			{
 				std::vector<double> a(Nmax*Nmax,0);
 				fill_random_vector(a);
-				transpuesta_blocking(a);
+				transpuesta_directa(a);
 			}
 
       			if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
@@ -115,9 +118,9 @@ int main(int argc,char**argv)
       			std::ofstream trash ("Delete_me_please.txt");
       			double aux_sum=0.0;
       			// Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      			for(auto x : c)
+      			for(auto x: c)
       			{	
-        		aux_sum += c[ll];
+        		aux_sum += x;
    			}
       			trash << aux_sum ;
       			trash.close();
