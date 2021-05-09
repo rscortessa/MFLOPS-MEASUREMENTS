@@ -1,7 +1,7 @@
 M_S=0  #Matrix size
 T_M=0 #code To Measure, 1 is multiplication, 0 is transpose for the performance blocking code. On the other hand, 0 is for multiplication_eigen, 1 is for multiplication_arm, 2 
 #is for transpose_eigen, 3 is for transpose_arm, for the performance matrix size code.
-
+CUENT=1 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
 LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enlacen al momento de la compilación
 
@@ -12,16 +12,16 @@ LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enl
 	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@		#Se compilan CON OPTIMIZACIÓN O3 todos los archivos cpp junto con las dependencias y los enlaces con las librerías
 
 Performance_blocking0.txt: Performance_blocking0.x   		#Se ejecuta el archivo Performance_blocking0.x según el tamaño de matriz y operaciones deseadas (multiplicación y
-	./$< $(M_S) $(T_M) > pdfdata/$(M_S)$@			#transposición)
+	./$< $(M_S) $(T_M) $(CUENT) > pdfdata/$(M_S)$@		#transposición)
 
 Performance_blocking3.txt: Performance_blocking3.x   		#Se ejecuta el archivo Performance_blocking3.x según el tamaño de matriz y operaciones deseadas (multiplicación y
-	./$< $(M_S) $(T_M) > pdfdata/$@			#transposición)
+	./$< $(M_S) $(T_M) $(CUENT) > pdfdata/$@		#transposición)
 	
 Performance_Matrix_Size0.txt: Performance_Matrix_Size0.x   	#Se ejecuta el archivo Performance_Matrix_Size0.txt según la operación deseada (multiplicación por armadillo y 
-	./$< $(T_M) > pdfdata/$@					#eigen, transposición por armadillo y eigen)
+	./$< $(T_M) $(CUENT) > pdfdata/$@				#eigen, transposición por armadillo y eigen)
 	
-Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta el archivo Performance_Matrix_Size0.txt según la operación deseada (multiplicación por armadillo y 
-	./$< $(T_M) > pdfdata/$@					#eigen, transposición por armadillo y eigen)
+Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta elarchivo Performance_Matrix_Size0.txt según la operación deseada (multiplicación por armadillo y 
+	./$< $(T_M) $(CUENT) > pdfdata/$@				#eigen, transposición por armadillo y eigen)
 
 block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt #Block_graph es usado como objetivo para crear las gráficas creadas en el archivo plot.gp
 	mv pdfdata/$(M_S)Performance_blocking0.txt aux0.txt     # Cambio de nombre a nombre auxiliar para ser utilizado por gnuplot 
