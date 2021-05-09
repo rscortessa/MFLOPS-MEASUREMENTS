@@ -19,7 +19,7 @@ int main(int argc,char**argv)
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  int cuentas=1;
+  int cuentas= std::atoi(argv[2]);
 //Inicializar las variables auxiliares
  std::vector<double> MFLOPS(cuentas+1,0);
  std::vector<double> REAL_TIME(cuentas+1,0);
@@ -55,8 +55,8 @@ int main(int argc,char**argv)
 
 
 
-// for(int i=0; i<cuentas;i++)
-//   {
+for(int ii=0; ii<cuentas;ii++)
+  {
 
       //if(Nmax*Nmax<Nb) exit(0);
       if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
@@ -92,21 +92,21 @@ int main(int argc,char**argv)
       MFLOPS[0]+=mflops/cuentas;
       REAL_TIME[0]+=real_time/cuentas;
       PROC_TIME[0]+=proc_time/cuentas;
-      MFLOPS[1]=mflops;
-      REAL_TIME[1]=real_time;
-      PROC_TIME[1]=proc_time;
+      MFLOPS[ii+1]=mflops;
+      REAL_TIME[ii+1]=real_time;
+      PROC_TIME[ii+1]=proc_time;
 
       // En este espacio se imprime algún resultado del código
-      std::ofstream trash ("Data.txt");
+      std::ofstream trash ("Delete_me.txt");
       double aux_sum=0.0;
       // Se guarda en un archivo de texto dado que no se quiere que aparezca en al ejecución
-      for(int l=0;l<Nmax*Nmax;l++)
+      for(int ll=0;ll<Nmax*Nmax;ll++)
       {
-        aux_sum += c[l];
+        aux_sum += c[ll];
     }
       trash << aux_sum ;
       trash.close();
- //   }
+    }
  //peak 18.64 Gflops
  std::cout<<MFLOPS[0]/(18640)<<"\t "<<desviacion_estandar(MFLOPS)/(18640)<<"\t "<<REAL_TIME[0]<<"\t "<<desviacion_estandar(REAL_TIME)<<"\t "<<PROC_TIME[0]<<"\t"<<desviacion_estandar(PROC_TIME)<<"\t"<<Nmax<<std::endl;
  REAL_TIME[0]=0;
