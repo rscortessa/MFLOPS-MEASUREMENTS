@@ -27,7 +27,7 @@ int main(int argc,char**argv)
  	std::vector<double> PROC_TIME(cuentas+1,0);
 
 
-	 std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"N_B"<<std::endl;
+	 std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"Nmax"<<std::endl;
  	for(int jj=0;jj<15;jj++)
 	{
        		int Nmax=std::pow(2,jj);
