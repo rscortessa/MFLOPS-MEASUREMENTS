@@ -15,6 +15,7 @@ void multiplicacion_directa(const std::vector<double> & A,const std::vector<doub
     {
         for(int jj=0;jj<N;jj++)        //ciclo que recorre las columnas
         {
+            for( int kk=0; kk<N; kk++)
             {
                   C[ii*N+jj]+=A[ii*N+kk]*B[kk*N+jj];     //Algoritmo de multiplicación
             }
