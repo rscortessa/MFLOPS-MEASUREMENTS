@@ -8,12 +8,12 @@ CUENT=1
 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
 LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enlacen al momento de la compilación
-
+DEBUG="-fsanitize=address"
 %0.x : %.cpp $(FIXED_DEPS) 					#Se compilan SIN OPTIMIZACIÓN todos los archivos cpp junto con las dependencias y los enlaces con las librerías 
-	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -o $@   
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -o $@   
 
 %3.x : %.cpp $(FIXED_DEPS)	
-	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@		#Se compilan CON OPTIMIZACIÓN O3 todos los archivos cpp junto con las dependencias y los enlaces con las librerías
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -O3 -o $@		#Se compilan CON OPTIMIZACIÓN O3 todos los archivos cpp junto con las dependencias y los enlaces con las librerías
 
 Performance_blocking0.txt: Performance_blocking0.x   		#Se ejecuta el archivo Performance_blocking0.x según el tamaño de matriz y operaciones deseadas (multiplicación y #transposición)
 	./$< $(M_S) $(T_M) $(CUENT) > pdfdata/$(M_S)_$(T_M)_$(CUENT)_$@		
