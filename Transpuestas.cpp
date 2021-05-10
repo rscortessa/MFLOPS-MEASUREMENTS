@@ -20,7 +20,7 @@
             {
                 for(int jp=jj; jp<jj+P; jp++) //Este ciclo recorre las filas del bloque de tamaño PxP dentro de la matriz
                 {
-                    AT[ip*N+jp]=1.0*A[jp*N+ip]; //En esta parte se crea la matriz transpuesta (ABT), cada elemento de la matriz PxP es transpuesto y la misma matriz PxP es también transpuesta dentro de ABT respecto a su posición original en A, así se obtiene la transpuesta de A, además, se ejecuta una operación de punto flotante para poder medir los FLOPS correspondientes
+                    AT[ip*N+jp]=1.2345*A[jp*N+ip]; //En esta parte se crea la matriz transpuesta (ABT), cada elemento de la matriz PxP es transpuesto y la misma matriz PxP es también transpuesta dentro de ABT respecto a su posición original en A, así se obtiene la transpuesta de A, además, se ejecuta una operación de punto flotante para poder medir los FLOPS correspondientes
                     //cout<<ABT[ip*N+jp]<<"\t";
                 }//cout<<endl;
             }
