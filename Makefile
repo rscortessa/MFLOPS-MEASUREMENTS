@@ -1,18 +1,19 @@
 M_S=0
 #Matrix size
 T_M=0
-#code To Measure, 1 is multiplication, 0 is transpose for the performance blocking code. On the other hand, 0 is for multiplication_eigen, 1 is for multiplication_arm, 2 
-#is for transpose_eigen, 3 is for transpose_arm, for the performance matrix size code.
+# Performance_blocking code To Measure, 1 is multiplication, 0 is transpose. 
+# Performance_Matrix_size code to measure 0,1,2,3 are multiplication eigen, arma, direct, blocking respectively
+#                                         4,5,6,7 are transpose      eigen, arma, direct, blocking respectively
 CUENT=1
 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
 LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enlacen al momento de la compilación
-
+DEBUG=-fsanitize=address
 %0.x : %.cpp $(FIXED_DEPS) 					#Se compilan SIN OPTIMIZACIÓN todos los archivos cpp junto con las dependencias y los enlaces con las librerías 
-	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -o $@   
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -o $@   
 
 %3.x : %.cpp $(FIXED_DEPS)	
-	g++ $(FIXED_DEPS) $< $(LIB_DEPS) -O3 -o $@		#Se compilan CON OPTIMIZACIÓN O3 todos los archivos cpp junto con las dependencias y los enlaces con las librerías
+	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -O3 -o $@		#Se compilan CON OPTIMIZACIÓN O3 todos los archivos cpp junto con las dependencias y los enlaces con las librerías
 
 Performance_blocking0.txt: Performance_blocking0.x   		#Se ejecuta el archivo Performance_blocking0.x según el tamaño de matriz y operaciones deseadas (multiplicación y #transposición)
 	./$< $(M_S) $(T_M) $(CUENT) > pdfdata/$(M_S)_$(T_M)_$(CUENT)_$@		
@@ -30,18 +31,18 @@ Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta elarchiv
 #El target Block_graph se utiliza si se necesita graficar la curva con y sin optimización 
    #para determinado estudio de blocking para dado M_S. T_M, CUENT.
   #Se cambia el nombre de los archivos para ser utilizados por el archivo.gp. En SEGUIDA
-block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt  
+block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt   #grafica compila ejecuta
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt aux0.txt        
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
-	gnuplot plot.gp
+	gnuplot plot_block.gp
 	mv file1.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Mflops.pdf				 
 	mv file2.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Time.pdf				
 	mv  aux0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt
-	mv  aux3.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt
-blocking_$(M_S)_$(T_M)_$(CUENT)_graph.pdf: pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt
+	mv  aux3.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt 
+blocking_$(M_S)_$(T_M)_$(CUENT)_graph.pdf: pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt #grafica si el archivo .txt deseado ya existe
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt aux0.txt        
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
-	gnuplot plot.gp
+	gnuplot plot_block.gp
 	mv file1.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Mflops.pdf
 	mv file2.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Time.pd
 	mv aux0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt

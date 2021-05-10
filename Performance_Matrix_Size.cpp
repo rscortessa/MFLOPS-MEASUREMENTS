@@ -59,35 +59,7 @@ int main(int argc,char**argv)
 				arma::mat CA(Nmax, Nmax); CA.zeros();
          		 	multplicacion_armadillo(AA,BA,CA);
 	 		}
-         		( William == 2 )|		//Initialization and calculation of Eigen Transposition
-	 		{
-			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
-				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
-     			 	transpuesta_eigen(AE,AET);
-	 		}
-	 		if( William == 3 )		//Initialization and calculation of Armadillo Transposition
-	 		{
-				arma::mat AA(Nmax, Nmax, arma::fill::randu);
-			 	transpuesta_armadillo(AA);
-	 		}
-			if( William == 4 )		//Initialization and calculation of Blocking multiplication
-			{
-				std::vector<double> a(Nmax*Nmax,0);
-        			std::vector<double> b(Nmax*Nmax,0);
-        			std::vector<double> c(Nmax*Nmax,0);
-        			fill_random_vector(a);
-        			fill_random_vector(b);
-				multiplicacion_blocking(a,b,c,Nb);
-			}
-			if( William == 5 )		//Initialization and calculation of Blocking Transposition
-			{
-				std::vector<double> a(Nmax*Nmax,0);
-				std::vector<double> b(Nmax*Nmax,0);
-				fill_random_vector(a);
-				fill_random_vector(b);
-				transpuesta_blocking(a,b,Nb);
-			}
-			if( William == 6 )		//Initialization and calculation of Direct Multiplication
+			if( William == 2 )		//Initialization and calculation of Direct Multiplication
 			{
 				std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
@@ -96,13 +68,42 @@ int main(int argc,char**argv)
         			fill_random_vector(b);
 				multiplicacion_directa(a,b,c);
 			}
-			if( William == 7 )		//Initialization and calculation of Direct Transposition
+			if( William == 3 )		//Initialization and calculation of Blocking multiplication
 			{
 				std::vector<double> a(Nmax*Nmax,0);
-				fill_random_vector(a);
-				transpuesta_directa(a);
+        			std::vector<double> b(Nmax*Nmax,0);
+        			std::vector<double> c(Nmax*Nmax,0);
+        			fill_random_vector(a);
+        			fill_random_vector(b);
+				multiplicacion_blocking(a,b,c,Nb);
 			}
-
+         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
+	 		{
+			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
+				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
+     			 	transpuesta_eigen(AE,AET);
+	 		}
+	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
+	 		{
+				arma::mat AA(Nmax, Nmax, arma::fill::randu);
+				arma::mat AT(Nmax, Nmax, arma::fill::randu);
+			 	transpuesta_armadillo(AA,AT);
+	 		}
+			
+			if( William == 6 )		//Initialization and calculation of Direct Transposition
+			{
+				std::vector<double> a(Nmax*Nmax,0);
+				std::vector<double> at(Nmax*Nmax,0);
+				fill_random_vector(a);
+				transpuesta_directa(a,at);
+			}
+			if( William == 7 )		//Initialization and calculation of Blocking Transposition
+			{
+				std::vector<double> a(Nmax*Nmax,0);
+				std::vector<double> b(Nmax*Nmax,0);
+				fill_random_vector(a);
+				transpuesta_blocking(a,b,Nb);
+			}			
       			if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
 			{
 	 	 		printf("retval: %d\n", retval);

@@ -80,6 +80,7 @@ int main(int argc,char**argv)
       			for(auto x : c)
      			{
        		 		aux_sum += x;
+				x=0.0; //Se vacia C para volvera usarlo en la próxima medición
    			}
       			trash << aux_sum ;
       			trash.close();
