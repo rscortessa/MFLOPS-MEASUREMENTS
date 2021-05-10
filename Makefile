@@ -16,10 +16,10 @@ Performance_blocking0.txt: Performance_blocking0.x   		#Se ejecuta el archivo Pe
 
 Performance_blocking3.txt: Performance_blocking3.x   		#Se ejecuta el archivo Performance_blocking3.x según el tamaño de matriz y operaciones deseadas (multiplicación y
 	./$< $(M_S) $(T_M) $(CUENT) > pdfdata/$(M_S)_$(T_M)_$(CUENT)$@		#transposición)
-	
+
 Performance_Matrix_Size0.txt: Performance_Matrix_Size0.x   	#Se ejecuta el archivo Performance_Matrix_Size0.txt según la operación deseada (multiplicación por armadillo y 
 	./$< $(T_M) $(CUENT) > pdfdata/$(T_M)_$(CUENT)$@				#eigen, transposición por armadillo y eigen)
-	
+
 Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta elarchivo Performance_Matrix_Size0.txt según la operación deseada (multiplicación por armadillo y 
 	./$< $(T_M) $(CUENT) > pdfdata/$(T_M)_$(CUENT)$@				#eigen, transposición por armadillo y eigen)
 
@@ -34,7 +34,7 @@ block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt  #El target
 size_graph.pdf: Performance_Matrix_Size0.txt Performance_Matrix_Size3.txt 	#En el target size_graph se crean las gráficas para estudiar el performance según el tamaño de la matriz
 	mv pdfdata/$(T_S)_$(CUENT)Performance_Matrix_Size0.txt aux0.txt			#su funcionamiento es análogo al caso de block_graph
 	mv pdfdata/$(T_S)_$(CUENT)Performance_Matrix_Size3.txt aux3.txt
-	gnuplot plot.gp
+	gnuplot plot_matrix.gp
 	mv file1.pdf pdfdata/Matrix_$(T_S)_$(CUENT)_Mflops.pdf				
 	mv file2.pdf pdfdata/Matrix_$(T_S)_$(CUENT)_Time.pdf				
 	mv aux0.txt pdfdata/$(T_S)_$(CUENT)Performance_Matrix_Size0.txt
