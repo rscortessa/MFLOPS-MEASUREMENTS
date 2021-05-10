@@ -87,7 +87,7 @@ int main(int argc,char**argv)
 	 		{
 				arma::mat AA(Nmax, Nmax, arma::fill::randu);
 				arma::mat AT(Nmax, Nmax, arma::fill::randu);
-			 	tr++anspuesta_armadillo(AA,AT);
+			 	transpuesta_armadillo(AA,AT);
 	 		}
 			
 			if( William == 6 )		//Initialization and calculation of Direct Transposition
