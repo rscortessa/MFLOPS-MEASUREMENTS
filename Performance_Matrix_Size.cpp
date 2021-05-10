@@ -10,7 +10,7 @@
 double desviacion_estandar(std::vector<double> & MFLOPS);	//Se inicializa el vector de desviación estándar
 void fill_random_vector(std::vector<double> & v);		//
 
-#define PAPI1 if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)\	
+#define PAPI1 if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)\
 			{\
 		 		printf("Could not initialise PAPI_flops \n");\
 		 		printf("Your platform may not support floating point operation event.\n");\
