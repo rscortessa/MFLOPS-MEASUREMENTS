@@ -33,20 +33,22 @@ int main(int argc,char**argv)
 	std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"Nmax"<<std::endl;
  	for(int jj=0;jj<15;jj++) 	//For cicle to variate the size of the matrix for 1 to 16384
 	{
-       		int Nmax=std::pow(2,jj);	//Nmax determinates the size of the matrix
+       		int Nmax=std::pow(2,jj);
+		std::vector<double> a(Nmax*Nmax,0);
+		std::vector<double> b(Nmax*Nmax,0);
+		std::vector<double> c(Nmax*Nmax,0);
+		Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
+		Eigen::MatrixXd BE = Eigen::MatrixXd::Random(Nmax,Nmax);	
+		Eigen::MatrixXd CE = Eigen::MatrixXd::Zero(Nmax, Nmax);
+		arma::mat AA(Nmax, Nmax, arma::fill::randu);
+		arma::mat BA(Nmax, Nmax, arma::fill::randu);
+		arma::mat CA(Nmax, Nmax); CA.zeros();
+		fill_random_vector(a);
+		fill_random_vector(b);
+	        //Nmax determinates the size of the matrix
 		for(int ii=0; ii<cuentas;ii++)		//For cicle to realize each count
   		{
-		  	std::vector<double> a(Nmax*Nmax,0);
-			std::vector<double> b(Nmax*Nmax,0);
-			std::vector<double> c(Nmax*Nmax,0);
-			Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
-			Eigen::MatrixXd BE = Eigen::MatrixXd::Random(Nmax,Nmax);	
-			Eigen::MatrixXd CE = Eigen::MatrixXd::Zero(Nmax, Nmax);
-			arma::mat AA(Nmax, Nmax, arma::fill::randu);
-			arma::mat BA(Nmax, Nmax, arma::fill::randu);
-			arma::mat CA(Nmax, Nmax); CA.zeros();
-			fill_random_vector(a);
-			fill_random_vector(b);
+		  	
      		 	//if(Nmax<Nb) exit(0);
      		 	if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)		//This code checks if PAPI can be used in the CPU
 			{
@@ -108,26 +110,28 @@ int main(int argc,char**argv)
       			std::ofstream trash ("Delete_me_please.txt");
 			if(William==0 || William==4)
 			  {
-			           aux_sum=CE.sum();
-      			           trash << aux_sum ;
-      			           trash.close();
+			        aux_sum=CE.sum();
+      			        trash << aux_sum ;
+				CE = Eigen::ArrayXXf::Zero(Nmax,Nmax);
+      			      
 			  }
 			if(William==1 || William==5)
 			  {
-			    aux_sum =arma::accu(CA);
-			   }
-      			           trash << aux_sum ;
-      			           trash.close();
+			        aux_sum =arma::accu(CA);		
+      			        trash << aux_sum ;
+				CA.zeros();
+      			      
 			  }
 			if(William==2 || William==3 || William==6 || William==7)
 			  {
-		           for(auto x: c)
-	    		   {	
-        		           aux_sum += x;
-			   }
-      			           trash << aux_sum ;
-      			           trash.close();
+		           	for(auto x: c)
+	    		   	{	
+        		      	     aux_sum += x;
+					x=0.0;
+			  	 }
+				trash << aux_sum ;     			         
 			  }
+			  trash.close();
 	  }
 	 //peak 18.64 Gflops
 	 //The results that are gonna be used are printed 
