@@ -1,8 +1,9 @@
 M_S=0
 #Matrix size
 T_M=0
-#code To Measure, 1 is multiplication, 0 is transpose for the performance blocking code. On the other hand, 0 is for multiplication_eigen, 1 is for multiplication_arm, 2 
-#is for transpose_eigen, 3 is for transpose_arm, for the performance matrix size code.
+# Performance_blocking code To Measure, 1 is multiplication, 0 is transpose. 
+# Performance_Matrix_size code to measure 0,1,2,3 are multiplication eigen, arma, direct, blocking respectively
+#                                         4,5,6,7 are transpose      eigen, arma, direct, blocking respectively
 CUENT=1
 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
