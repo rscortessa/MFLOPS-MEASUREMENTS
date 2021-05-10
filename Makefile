@@ -8,7 +8,7 @@ CUENT=1
 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
 LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enlacen al momento de la compilación
-DEBUG="-fsanitize=address"
+DEBUG=-fsanitize=address
 %0.x : %.cpp $(FIXED_DEPS) 					#Se compilan SIN OPTIMIZACIÓN todos los archivos cpp junto con las dependencias y los enlaces con las librerías 
 	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -o $@   
 
