@@ -112,7 +112,10 @@ int main(int argc,char**argv)
 			  {
 			        aux_sum=CE.sum();
       			        trash << aux_sum ;
-				CE = Eigen::ArrayXXf::Zero(Nmax,Nmax);
+				for(auto & x: CE)
+				{
+					x=0.0;	
+				}
       			      
 			  }
 			if(William==1 || William==5)
@@ -124,7 +127,7 @@ int main(int argc,char**argv)
 			  }
 			if(William==2 || William==3 || William==6 || William==7)
 			  {
-		           	for(auto x: c)
+		           	for(auto & x: c)
 	    		   	{	
         		      	     aux_sum += x;
 					x=0.0;
