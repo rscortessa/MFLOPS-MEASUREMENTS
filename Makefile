@@ -31,15 +31,15 @@ Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta elarchiv
 #El target Block_graph se utiliza si se necesita graficar la curva con y sin optimización 
    #para determinado estudio de blocking para dado M_S. T_M, CUENT.
   #Se cambia el nombre de los archivos para ser utilizados por el archivo.gp. En SEGUIDA
-block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt  
+block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt   #grafica compila ejecuta
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt aux0.txt        
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
 	gnuplot plot_block.gp
 	mv file1.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Mflops.pdf				 
 	mv file2.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Time.pdf				
 	mv  aux0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt
-	mv  aux3.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt
-blocking_$(M_S)_$(T_M)_$(CUENT)_graph.pdf: pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt
+	mv  aux3.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt 
+blocking_$(M_S)_$(T_M)_$(CUENT)_graph.pdf: pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt #grafica si el archivo .txt deseado ya existe
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt aux0.txt        
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
 	gnuplot plot_block.gp
