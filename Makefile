@@ -44,7 +44,7 @@ block$(M_S)_$(T_M)_$(CUENT).pdf: pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_bloc
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
 	gnuplot plot_block.gp
 	mv file1.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Mflops.pdf
-	mv file2.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Time.pd
+	mv file2.pdf pdfdata/blocking_$(M_S)_$(T_M)_$(CUENT)_Time.pdf
 	mv aux0.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt
 	mv aux3.txt pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt
 
