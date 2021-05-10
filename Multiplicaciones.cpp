@@ -11,12 +11,14 @@ void multiplicacion_eigen(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, 
 void multiplicacion_directa(const std::vector<double> & A,const std::vector<double> & B,std::vector<double> & C)    //Se define la multiplicación directa de matrices
 {
     int N =std::sqrt(C.size());     //Se calcula el tamaño de la matriz
-    for(int i=0;i<N*N;i++)      //ciclo que recorre las filas
+    for(int ii=0;ii<N;ii++)      //ciclo que recorre las filas
     {
-        for(int j=0;j<N;j++)        //ciclo que recorre las columnas
+        for(int jj=0;jj<N;jj++)        //ciclo que recorre las columnas
         {
-            C[i]+=1.0*A[N*int(i/N)+j]*B[j*N+(i%N)];     //Algoritmo de multiplicación
-
+            for( int kk=0; kk<N; KK++)
+            {
+                  C[ii*N+jj]+=A[ii*N+kk]*B[kk*N+jj];     //Algoritmo de multiplicación
+            }
         }
     }
 
@@ -41,7 +43,7 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
                       for(int i=bi*Nb;i<(bi+1)*Nb;i++)        //Se recorren las filas del bloque 
                       {
                           for(int j=bj*Nb;j<(bj+1)*Nb;j++)        //Se recorren las columnas del bloque 
-                          {
+                          { 
                                for(int k=bk*Nb;k<(bk+1)*Nb;k++)   	    //Se emplea k para implementar el algorítmo de la multiplicación por blocking
                               {
                                 c[i*M+j]+=a[i*M+k]*b[M*k+j];        //Se implementa el algorítmo de multiplicación
