@@ -112,17 +112,14 @@ int main(int argc,char**argv)
 			  {
 			        aux_sum=CE.sum();
       			        trash << aux_sum ;
-				for(auto & x: CE)
-				{
-					x=0.0;	
-				}
+	    
       			      
 			  }
 			if(William==1 || William==5)
 			  {
 			        aux_sum =arma::accu(CA);		
       			        trash << aux_sum ;
-				CA.zeros();
+			
       			      
 			  }
 			if(William==2 || William==3 || William==6 || William==7)
@@ -130,7 +127,7 @@ int main(int argc,char**argv)
 		           	for(auto & x: c)
 	    		   	{	
         		      	     aux_sum += x;
-					x=0.0;
+				     
 			  	 }
 				trash << aux_sum ;     			         
 			  }
