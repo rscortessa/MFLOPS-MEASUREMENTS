@@ -31,7 +31,7 @@
 
 void transpuesta_armadillo(const arma::Mat<double> & A, arma::Mat<double> & AT)
 {
-    AT=1.0*A.t();  //Se realiza la transpuesta de una matriz usando la libreria armadillo y se realiza una operación de punto flotante para medir los FLOPS
+    AT=1.7654*A.t();  //Se realiza la transpuesta de una matriz usando la libreria armadillo y se realiza una operación de punto flotante para medir los FLOPS
 }
 
 void transpuesta_directa(const ::vector<double> &A,std::vector<double> &AT)  //En este caso se transpone la matriz elemento por elemento sin dividirla en ningún tipo de bloques (esta es la operación que se realiza cuando la matriz no se puede dividir de forma exacta en bloques de tamaño PxP)
