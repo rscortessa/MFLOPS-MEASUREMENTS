@@ -78,7 +78,27 @@ int main(int argc,char**argv)
 			}
 			if( William == 2 )		//Initialization and calculation of Direct Multiplication
 			{
-				std::vector<double> a(Nmax*Nmax,0);
+				Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
+				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
+				PAPI1
+     			 	transpuesta_eigen(AE,AET);
+	 			PAPI2
+				aux_sum=AET.sum();
+      			        trash << aux_sum ;
+			}
+			if( William == 3 )		//Initialization and calculation of Blocking multiplication
+			{
+				arma::mat AA(Nmax, Nmax, arma::fill::randu);
+				arma::mat AT(Nmax, Nmax, arma::fill::randu);
+				PAPI1
+			 	transpuesta_armadillo(AA,AT);
+	 			PAPI2
+				aux_sum =arma::accu(AT);		
+      			        trash << aux_sum ;
+			}
+         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
+	 		{
+			 	std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
         			std::vector<double> c(Nmax*Nmax,0);
         			fill_random_vector(a);
@@ -88,10 +108,10 @@ int main(int argc,char**argv)
 				PAPI2
 				for(auto & x: c)
 	    		   	{ aux_sum += x;}				    
-				trash << aux_sum ;     
+				trash << aux_sum ;
 			}
-			if( William == 3 )		//Initialization and calculation of Blocking multiplication
-			{
+	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
+	 		{	
 				std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
         			std::vector<double> c(Nmax*Nmax,0);
@@ -102,27 +122,7 @@ int main(int argc,char**argv)
 				PAPI2
 				for(auto & x: c)
 	    		   	{ aux_sum += x;}				    
-				trash << aux_sum ;     
-			}
-         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
-	 		{
-			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
-				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
-				PAPI1
-     			 	transpuesta_eigen(AE,AET);
-	 			PAPI2
-				aux_sum=AET.sum();
-      			        trash << aux_sum ;
-			}
-	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
-	 		{
-				arma::mat AA(Nmax, Nmax, arma::fill::randu);
-				arma::mat AT(Nmax, Nmax, arma::fill::randu);
-				PAPI1
-			 	transpuesta_armadillo(AA,AT);
-	 			PAPI2
-				aux_sum =arma::accu(AT);		
-      			        trash << aux_sum ;
+				trash << aux_sum ;
 			}
 			
 			if( William == 6 )		//Initialization and calculation of Direct Transposition
