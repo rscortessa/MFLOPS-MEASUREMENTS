@@ -12,16 +12,15 @@
     }
     else //En caso contrario se procede al metodo de blocking
     {
-    for(int ii=0; ii<N; ii+=P)  //Se establece un ciclo que va marcando las fronteras de los bloques (recorre la matriz de P en P) para las columnas
+    for(int ii=0; ii<N; ii+=P)  //Se establece un ciclo que va marcando las fronteras de los bloques para las columnas
     {
-        for(int jj=0; jj<N; jj+=P)  //Se hace otro ciclo similar al anterior pero esta vez para las filas, más adelante lo que se hará son ciclos que recorran estos bloques de PxP elemento por elemento
+        for(int jj=0; jj<N; jj+=P)  //Se hace otro ciclo similar al anterior pero esta vez para las filas
         {
             for(int ip=ii; ip<ii+P; ip++) //Este ciclo recorre las columnas del bloque de tamaño PxP dentro de la matriz
             {
                 for(int jp=jj; jp<jj+P; jp++) //Este ciclo recorre las filas del bloque de tamaño PxP dentro de la matriz
                 {
-                    AT[ip*N+jp]=1.2345*A[jp*N+ip]; //En esta parte se crea la matriz transpuesta (ABT), cada elemento de la matriz PxP es transpuesto y la misma matriz PxP es también transpuesta dentro de ABT respecto a su posición original en A, así se obtiene la transpuesta de A, además, se ejecuta una operación de punto flotante para poder medir los FLOPS correspondientes
-                    //cout<<ABT[ip*N+jp]<<"\t";
+                    AT[ip*N+jp]=1.2345*A[jp*N+ip]; //En esta parte se crea la matriz transpuesta (ABT)
                 }//cout<<endl;
             }
         }
