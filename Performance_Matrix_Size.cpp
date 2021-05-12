@@ -51,6 +51,8 @@ int main(int argc,char**argv)
 		
 		for(int ii=0; ii<cuentas;ii++)		//For cicle to realize each count
   		{
+
+
      		 	std::ofstream trash ("Delete_me_please.txt");
 			double aux_sum=0.0;
       		//Here William determinates the code to measure
@@ -78,6 +80,7 @@ int main(int argc,char**argv)
 			}
 			if( William == 2 )		//Initialization and calculation of Direct Multiplication
 			{
+
 				Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
 				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
 				PAPI1
@@ -122,7 +125,7 @@ int main(int argc,char**argv)
 				PAPI2
 				for(auto & x: c)
 	    		   	{ aux_sum += x;}				    
-				trash << aux_sum ;
+				trash << aux_sum;
 			}
 			
 			if( William == 6 )		//Initialization and calculation of Direct Transposition
@@ -151,6 +154,7 @@ int main(int argc,char**argv)
 			}	
 			
       			
+
 			//Vectors of PAPI are filled for the code calculated by william choice
       			MFLOPS[0]+=mflops/cuentas;
       			REAL_TIME[0]+=real_time/cuentas;
@@ -194,4 +198,4 @@ void fill_random_vector(std::vector<double> & v)		//This vector is used to fill 
         x=dist(gen);
     }
 } 
-
+ 
