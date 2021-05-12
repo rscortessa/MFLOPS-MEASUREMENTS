@@ -60,6 +60,7 @@ size_graph.pdf: Performance_Matrix_Size0.txt Performance_Matrix_Size3.txt
 	mv aux3.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt
 
 Msize_$(T_M)_$(CUENT).pdf: pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt
+	mv pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt aux0.txt
 	mv pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt aux3.txt
 	gnuplot plot_matrix.gp
 	mv file1.pdf pdfdata/Matrix_$(T_M)_$(CUENT)_Mflops.pdf				
