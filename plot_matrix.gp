@@ -1,5 +1,6 @@
 set style data linespoints
 set logscale x 2
+set logscale y
 set xlabel "Tamaño de lado matriz (N)"; set ylabel "Mflops/Mflops_{max}"
 set key left top
 set term pdf
