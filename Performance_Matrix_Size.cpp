@@ -35,8 +35,8 @@ int main(int argc,char**argv)
   	float ireal_time, iproc_time, imflops;	
   	long long iflpops;			
   	int retval;				
-  	int cuentas= std::atoi(argv[2]);	//Determinates the number of counts made by the program
-	//Aux variables are initialized
+  	int cuentas= std::atoi(argv[2]);	//Cuentas is the sample size, for statistical treatment
+	//Aux vectors for storing the samples, V[0] stores the mean, V[n] n=1,2,...,cuentas  stores the data
  	std::vector<double> MFLOPS(cuentas+1,0);
  	std::vector<double> REAL_TIME(cuentas+1,0);
  	std::vector<double> PROC_TIME(cuentas+1,0);
@@ -44,14 +44,15 @@ int main(int argc,char**argv)
 	
 	//Variables used to measure the development of the code with PAPI are printed
 	std::cout<<"MFLOPS"<<" \t "<<"MFLOPS%"<<" \t "<<"REAL_TIME"<<" \t "<<"REAL_TIME%"<<" \t "<<"PROC_TIME"<<" \t "<<"PROC_TIME%"<<" \t "<<"Nmax"<<std::endl;
- 	for(int jj=0;jj<15;jj++) 	//For cicle to variate the size of the matrix for 1 to 16384
+	
+ 	for(int jj=0;jj<15;jj++) 	//For cicle to variate the size of the matrix for 1 to 16384 in powers of 2
 	{
        		int Nmax=std::pow(2,jj);
 		
 		for(int ii=0; ii<cuentas;ii++)		//For cicle to realize each count
   		{
 
-     		 	//if(Nmax<Nb) exit(0);
+
      		 	std::ofstream trash ("Delete_me_please.txt");
 			double aux_sum=0.0;
       		//Here William determinates the code to measure
@@ -79,7 +80,28 @@ int main(int argc,char**argv)
 			}
 			if( William == 2 )		//Initialization and calculation of Direct Multiplication
 			{
-				std::vector<double> a(Nmax*Nmax,0);
+
+				Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
+				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
+				PAPI1
+     			 	transpuesta_eigen(AE,AET);
+	 			PAPI2
+				aux_sum=AET.sum();
+      			        trash << aux_sum ;
+			}
+			if( William == 3 )		//Initialization and calculation of Blocking multiplication
+			{
+				arma::mat AA(Nmax, Nmax, arma::fill::randu);
+				arma::mat AT(Nmax, Nmax, arma::fill::randu);
+				PAPI1
+			 	transpuesta_armadillo(AA,AT);
+	 			PAPI2
+				aux_sum =arma::accu(AT);		
+      			        trash << aux_sum ;
+			}
+         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
+	 		{
+			 	std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
         			std::vector<double> c(Nmax*Nmax,0);
         			fill_random_vector(a);
@@ -89,10 +111,10 @@ int main(int argc,char**argv)
 				PAPI2
 				for(auto & x: c)
 	    		   	{ aux_sum += x;}				    
-				trash << aux_sum ;     
+				trash << aux_sum ;
 			}
-			if( William == 3 )		//Initialization and calculation of Blocking multiplication
-			{
+	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
+	 		{	
 				std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
         			std::vector<double> c(Nmax*Nmax,0);
@@ -103,27 +125,7 @@ int main(int argc,char**argv)
 				PAPI2
 				for(auto & x: c)
 	    		   	{ aux_sum += x;}				    
-				trash << aux_sum ;     
-			}
-         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
-	 		{
-			 	Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
-				Eigen::MatrixXd AET = Eigen::MatrixXd::Zero(Nmax, Nmax);
-				PAPI1
-     			 	transpuesta_eigen(AE,AET);
-	 			PAPI2
-				aux_sum=AET.sum();
-      			        trash << aux_sum ;
-			}
-	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
-	 		{
-				arma::mat AA(Nmax, Nmax, arma::fill::randu);
-				arma::mat AT(Nmax, Nmax, arma::fill::randu);
-				PAPI1
-			 	transpuesta_armadillo(AA,AT);
-	 			PAPI2
-				aux_sum =arma::accu(AT);		
-      			        trash << aux_sum ;
+				trash << aux_sum;
 			}
 			
 			if( William == 6 )		//Initialization and calculation of Direct Transposition
@@ -152,7 +154,8 @@ int main(int argc,char**argv)
 			}	
 			
       			
-			//Vectors of PAPI are filled for the code calculated by william
+
+			//Vectors of PAPI are filled for the code calculated by william choice
       			MFLOPS[0]+=mflops/cuentas;
       			REAL_TIME[0]+=real_time/cuentas;
       			PROC_TIME[0]+=proc_time/cuentas;
@@ -194,4 +197,5 @@ void fill_random_vector(std::vector<double> & v)		//This vector is used to fill 
     {
         x=dist(gen);
     }
-}
+} 
+
