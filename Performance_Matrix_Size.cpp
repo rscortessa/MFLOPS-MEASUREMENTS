@@ -27,7 +27,7 @@ void fill_random_vector(std::vector<double> & v);		//
 int main(int argc,char**argv)
 {
 	std::cout.precision(7); std::cout.setf(std::ios::scientific);
-	int Nb=8 ; //optimum size for blocking
+	int Nb=16 ; //optimum size for blocking
 	int William = std::atoi(argv[1]); //william determinates the code to measure
 	//Variables for PAPI are initialized
 	float real_time, proc_time,mflops;	
