@@ -23,6 +23,11 @@ void multiplicacion_directa(const std::vector<double> & A,const std::vector<doub
     }
 
 }
+void multplicacion_armadillo(arma::Mat<double> & A,arma::Mat<double>& B,arma::Mat<double> & C)      //Se define la multiplicacion usando Armadillo
+{
+  C=A*B;
+}
+
 void multiplicacion_blocking(const std::vector<double> a,const std::vector<double> b,std::vector<double> &c,int Nb)     //Se define la multiplicación usando blo
 {
     int M=std::sqrt(a.size());      //Se calcula el tamaño de la matriz
@@ -56,9 +61,4 @@ void multiplicacion_blocking(const std::vector<double> a,const std::vector<doubl
      }
 
 
-}
-
-void multplicacion_armadillo(arma::Mat<double> & A,arma::Mat<double>& B,arma::Mat<double> & C)      //Se define la multiplicacion usando Armadillo
-{
-  C=A*B;
 }
