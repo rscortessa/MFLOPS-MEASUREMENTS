@@ -78,7 +78,7 @@ int main(int argc,char**argv)
 				aux_sum =arma::accu(CA);		
       			        trash << aux_sum ;
 			}
-			if( William == 2 )		//Initialization and calculation of Direct Multiplication
+			if( William == 2 )		//Initialization and calculation of Eigen Transposition
 			{
 
 				Eigen::MatrixXd AE = Eigen::MatrixXd::Random(Nmax,Nmax);
@@ -89,7 +89,7 @@ int main(int argc,char**argv)
 				aux_sum=AET.sum();
       			        trash << aux_sum ;
 			}
-			if( William == 3 )		//Initialization and calculation of Blocking multiplication
+			if( William == 3 )		//Initialization and calculation of Armadillo Transposition
 			{
 				arma::mat AA(Nmax, Nmax, arma::fill::randu);
 				arma::mat AT(Nmax, Nmax, arma::fill::randu);
@@ -99,7 +99,7 @@ int main(int argc,char**argv)
 				aux_sum =arma::accu(AT);		
       			        trash << aux_sum ;
 			}
-         		if ( William == 4 )		//Initialization and calculation of Eigen Transposition
+         		if ( William == 4 )		//Initialization and calculation of Direct multiplication
 	 		{
 			 	std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
@@ -113,7 +113,7 @@ int main(int argc,char**argv)
 	    		   	{ aux_sum += x;}				    
 				trash << aux_sum ;
 			}
-	 		if( William == 5 )		//Initialization and calculation of Armadillo Transposition
+	 		if( William == 5 )		//Initialization and calculation of Blocking multiplication
 	 		{	
 				std::vector<double> a(Nmax*Nmax,0);
         			std::vector<double> b(Nmax*Nmax,0);
