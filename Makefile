@@ -8,7 +8,7 @@ CUENT=1
 #Number of times each operation is applied, para determinar el tamaño de la muestra. 
 FIXED_DEPS=Multiplicaciones.cpp Transpuestas.cpp 		#Se definen las dependencias de todos programas que se usarán
 LIB_DEPS=-lpapi -larmadillo					#Se definen todas las librerías para que se enlacen al momento de la compilación
-DEBUG=-fsanitize=address
+
 %0.x : %.cpp $(FIXED_DEPS) 					#Se compilan SIN OPTIMIZACIÓN todos los archivos cpp junto con las dependencias y los enlaces con las librerías 
 	g++ $(FIXED_DEPS) $< $(LIB_DEPS) $(DEBUG) -o $@   
 
@@ -30,8 +30,8 @@ Performance_Matrix_Size3.txt: Performance_Matrix_Size3.x   	#Se ejecuta elarchiv
 
 #El target Block_graph se utiliza si se necesita graficar la curva con y sin optimización 
    #para determinado estudio de blocking para dado M_S. T_M, CUENT.
-  #Se cambia el nombre de los archivos para ser utilizados por el archivo.gp. En SEGUIDA
-block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt   #grafica compila ejecuta
+  #Se cambia el nombre de los archivos para ser utilizados por el archivo.gp. en seguida se devuelven estos archivos a su nombre original
+block_graph.pdf: Performance_blocking0.txt Performance_blocking3.txt  
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking0.txt aux0.txt        
 	mv pdfdata/$(M_S)_$(T_M)_$(CUENT)_Performance_blocking3.txt aux3.txt         
 	gnuplot plot_block.gp
@@ -59,7 +59,7 @@ size_graph.pdf: Performance_Matrix_Size0.txt Performance_Matrix_Size3.txt
 	mv aux0.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt
 	mv aux3.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt
 
-Msize_$(T_M)_$(CUENT).pdf: pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt
+Msize_$(T_M)_$(CUENT).pdf: pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt #grafica si ya existen los archivos .txt
 	mv pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt aux0.txt
 	mv pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt aux3.txt
 	gnuplot plot_matrix.gp
@@ -69,5 +69,5 @@ Msize_$(T_M)_$(CUENT).pdf: pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size0.txt 
 	mv aux3.txt pdfdata/$(T_M)_$(CUENT)_Performance_Matrix_Size3.txt
 
 .PHONY:
-clean:								#Clean se usa para remover todos los archivos creados en este make
+clean:								
 	rm *.x *.o
