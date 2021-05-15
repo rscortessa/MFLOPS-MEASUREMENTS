@@ -10,4 +10,4 @@ Entonces, para usar el Makefile es necesario darle valores a estas variables seg
 
 Por ejemplo, si se desea graficar los datos del performance según el tamaño de matriz de la multiplicación de Eigen con 3 cuentas, se debe ejecutar el siguiente comando:
 
-make "T_M"=0 "CUENT"=0 Msize_0_3.pdf 
+make "T_M"=0 "CUENT"=3 Msize_0_3.pdf 
