@@ -18,3 +18,8 @@
 > ### Ejemplo:
 > Si se desea graficar los datos del performance según el tamaño de matriz de la multiplicación de Eigen con 3 cuentas, se debe ejecutar el siguiente comando: <br>
 > **make "T_M"=0 "CUENT"=3 Msize.pdf** 
+
+#INFORMACIÓN DE NORMALIZACIÓN
+>los archivos .txt están normalizados con respecto al pico del procesador 18.6 Gflops
+>
+>los archivos .pdf están normalizados con respecto al pico del procesador por nucleo 2.8 Gflops
