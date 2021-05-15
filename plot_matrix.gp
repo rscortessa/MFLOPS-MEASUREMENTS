@@ -8,7 +8,7 @@ show style data
 set out "file1.pdf"
 set title "Mflops vs N"
 show bars
-plot "aux0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+plot "aux0.txt" u 7:(6.67*$1):(6.67*$2) w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "aux0.txt" u 7:(6.67*$1):(6.67*$2) w lines title "O0" lt rgb "navy", \
 "aux3.txt" u 7:(6.67*$1):(6.67*$2) with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "aux3.txt" u 7:(6.67*$1):(6.67*$2) with lines title "O3" lt rgb "red" 
