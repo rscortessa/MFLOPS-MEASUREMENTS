@@ -1,20 +1,13 @@
-QUE FALTA HACER código
--- Comentar con el fin de explicar las partes de cada código
--- Realizar las mediones de la transpuesta por blocking, usando armadillo 
-   y eigen
--- Completar detalles en el makefile y archivo '.gp' para que grafique los
-   datos relacionados con las mediciones del Performane_Matrix_Size.cpp
--- REalizar las pertinentes gráficas
-  *Para 1.5.1
-      saldrán 8 archivos de texto
-      EJEMPLO ARCHIVO DE TEXTO 
-      
-      -------------------------MULT--------------------------------------------------
-      MFLOPS | Desv(MFLOPS) | TIEMPO PROC | Desv(T Proc) | T REAL | desv(T REAL) | Nb 
-      
-QUE FALTA HACER INFORME
--- Terminar detalles experimentales o de procedimeinto
--- Exponer los resultados y analizarlos
--- Conclusiones y resumen
+HOW TO USE MAKEFILE:
 
-	-- Das ist alles
+El Makefile de este proyecto funciona por variables que determinan que proceso hacer, estas variables son:
+
+--> M_S que indica el tamaño de la matriz a usar para el código de Performance_blocking.cpp
+--> T_M que equivale a William en cada código, para indicar qué operación se va a realizar
+--> CUENT que determina cuántas cuentas son realizadas, para establecer barras de error en cada gráfica
+
+Entonces, para usar el Makefile es necesario darle valores a estas variables según la operación que uno desee realizar.
+
+Por ejemplo, si se desea graficar los datos del performance según el tamaño de matriz de la multiplicación de Eigen con 3 cuentas, se debe ejecutar el siguiente comando:
+
+make "T_M"=0 "CUENT"=0 Msize_0_3.pdf 
