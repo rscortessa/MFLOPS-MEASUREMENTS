@@ -1,11 +1,11 @@
 set style data linespoints
 set logscale x 2
-set xlabel "Tamaño del bloque N_b"; set ylabel "Mflops/Mflops_{max}"
+set xlabel "Tamaño de lado N"; set ylabel "Mflops/Mflops_{max}"
 set key left top
 set term pdf
 show style data
 set out "pdfdata/all_transpuesta_MFLOPS_00.pdf"
-set title "Mflops vs Nb"
+set title "Mflops vs N"
 show bars
 plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w lines title "Transpuesta eigen" lt rgb "navy",\
@@ -18,8 +18,8 @@ plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w yerrorbars linecolor 
 unset output
 set output "pdfdata/all_transpuesta_Time_00.pdf"
 set logscale y 10
-set xlabel "Tamaño del bloque N_b"; set ylabel "tiempo(s)"
-set title "Time vs Nb"
+set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
+set title "Time vs N"
 plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
 "pdfdata/3_4_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
@@ -29,6 +29,7 @@ plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w yerrorbars linecolor 
 "pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
+set title "Mflops vs N"
 set output "pdfdata/all_transpuesta_MFLOPS_03.pdf"
 set key left bottom
 plot "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
@@ -43,8 +44,8 @@ unset output
 set output "pdfdata/all_transpuesta_time_03.pdf"
 set key left top
 set logscale y 10
-set xlabel "Tamaño del bloque N_b"; set ylabel "tiempo(s)"
-set title "Time vs Nb"
+set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
+set title "Time vs N"
 plot "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
 "pdfdata/3_4_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
@@ -54,6 +55,7 @@ plot "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w yerrorbars linecolor 
 "pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
+set title "Mflops vs N"
 set output "pdfdata/all_multiplication_MFLOPS_03.pdf"
 set key left bottom
 plot "pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
@@ -61,47 +63,48 @@ plot "pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "
 "pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
 "pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
+"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
 "pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
+"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_multiplication_time_00.pdf"
+set output "pdfdata/all_multiplication_time_03.pdf"
 set logscale y 10
 set key left top
-set xlabel "Tamaño del bloque N_b"; set ylabel "tiempo(s)"
-set title "Time vs Nb"
-plot "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
+set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
+set title "Time vs N"
+plot "pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
+"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
+"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
+"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
 set output "pdfdata/all_multiplication_MFLOPS_00.pdf"
+set title "Mflops vs N"
 set key left bottom
 plot "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación eigen" lt rgb "navy",\
 "pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
 "pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
+"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
 "pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
+"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
 set output "pdfdata/all_multiplication_time_00.pdf"
 set key left top
 set logscale y 10
-set xlabel "Tamaño del bloque N_b"; set ylabel "tiempo(s)"
-set title "Time vs Nb"
+set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
+set title "Time vs N"
 plot "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
 "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
 "pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
 "pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
 "pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
+"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación directa" lt rgb "green", \
 "pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
+"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
 unset terminal
