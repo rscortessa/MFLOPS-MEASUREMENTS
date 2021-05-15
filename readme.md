@@ -21,4 +21,5 @@
 
 #INFORMACIÓN DE NORMALIZACIÓN
 >los archivos .txt están normalizados con respecto al pico del procesador 18.6 Gflops
+>
 >los archivos .pdf están normalizados con respecto al pico del procesador por nucleo 2.8 Gflops
