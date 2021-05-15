@@ -4,107 +4,107 @@ set xlabel "Tamaño de lado N"; set ylabel "Mflops/Mflops_{max}"
 set key left top
 set term pdf
 show style data
-set out "pdfdata/all_transpuesta_MFLOPS_00.pdf"
+set out "pdffiles/all_transpuesta_MFLOPS_00.pdf"
 set title "Mflops vs N"
 show bars
-plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w lines title "Transpuesta eigen" lt rgb "navy",\
-"pdfdata/3_4_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/3_4_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Transpuesta armadillo" lt rgb "red",\
-"pdfdata/6_4_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/6_4_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
+plot "datafiles/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/2_4_Performance_Matrix_Size00.txt" u 7:1:2 w lines title "Transpuesta eigen" lt rgb "navy",\
+"datafiles/3_4_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/3_4_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Transpuesta armadillo" lt rgb "red",\
+"datafiles/6_4_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/6_4_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
+"datafiles/7_3_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/7_3_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_transpuesta_Time_00.pdf"
+set output "pdffiles/all_transpuesta_Time_00.pdf"
 set logscale y 10
 set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
 set title "Time vs N"
-plot "pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
-"pdfdata/3_4_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/3_4_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta armadillo" lt rgb "red",\
-"pdfdata/6_4_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/6_4_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
+plot "datafiles/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/2_4_Performance_Matrix_Size00.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
+"datafiles/3_4_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/3_4_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta armadillo" lt rgb "red",\
+"datafiles/6_4_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/6_4_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
+"datafiles/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/7_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
 set title "Mflops vs N"
-set output "pdfdata/all_transpuesta_MFLOPS_03.pdf"
+set output "pdffiles/all_transpuesta_MFLOPS_03.pdf"
 set key left bottom
-plot "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:1:2 w lines title "Transpuesta eigen" lt rgb "navy",\
-"pdfdata/3_4_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/3_4_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Transpuesta armadillo" lt rgb "red",\
-"pdfdata/6_4_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/6_4_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
+plot "datafiles/2_4_Performance_Matrix_Size03.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/2_4_Performance_Matrix_Size03.txt" u 7:1:2 w lines title "Transpuesta eigen" lt rgb "navy",\
+"datafiles/3_4_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/3_4_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Transpuesta armadillo" lt rgb "red",\
+"datafiles/6_4_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/6_4_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Transpuesta directa" lt rgb "green", \
+"datafiles/7_3_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/7_3_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_transpuesta_time_03.pdf"
+set output "pdffiles/all_transpuesta_time_03.pdf"
 set key left top
 set logscale y 10
 set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
 set title "Time vs N"
-plot "pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
-"pdfdata/3_4_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/3_4_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta armadillo" lt rgb "red",\
-"pdfdata/6_4_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/6_4_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
+plot "datafiles/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/2_4_Performance_Matrix_Size03.txt" u 7:5:6 w lines title "Transpuesta eigen" lt rgb "navy",\
+"datafiles/3_4_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/3_4_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta armadillo" lt rgb "red",\
+"datafiles/6_4_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/6_4_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
+"datafiles/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/7_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
 set title "Mflops vs N"
-set output "pdfdata/all_multiplication_MFLOPS_03.pdf"
+set output "pdffiles/all_multiplication_MFLOPS_03.pdf"
 set key left bottom
-plot "pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Multiplicación eigen" lt rgb "navy",\
-"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
-"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
-"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
+plot "datafiles/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/0_3_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Multiplicación eigen" lt rgb "navy",\
+"datafiles/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/1_3_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
+"datafiles/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/4_1_Performance_Matrix_Size3.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
+"datafiles/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/5_1_Performance_Matrix_Size3.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_multiplication_time_03.pdf"
+set output "pdffiles/all_multiplication_time_03.pdf"
 set logscale y 10
 set key left top
 set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
 set title "Time vs N"
-plot "pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
-"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
-"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
-"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
+plot "datafiles/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/0_3_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
+"datafiles/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/1_3_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
+"datafiles/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/4_1_Performance_Matrix_Size3.txt" u 7:5:6 w lines title "Transpuesta directa" lt rgb "green", \
+"datafiles/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/5_1_Performance_Matrix_Size3.txt" u 7:5:6 with lines title "Transpuesta blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_multiplication_MFLOPS_00.pdf"
+set output "pdffiles/all_multiplication_MFLOPS_00.pdf"
 set title "Mflops vs N"
 set key left bottom
-plot "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación eigen" lt rgb "navy",\
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
+plot "datafiles/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/0_3_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación eigen" lt rgb "navy",\
+"datafiles/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/1_3_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación armadillo" lt rgb "red",\
+"datafiles/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/4_1_Performance_Matrix_Size0.txt" u 7:1:2 w lines title "Multiplicación directa" lt rgb "green", \
+"datafiles/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/5_1_Performance_Matrix_Size0.txt" u 7:1:2 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
-set output "pdfdata/all_multiplication_time_00.pdf"
+set output "pdffiles/all_multiplication_time_00.pdf"
 set key left top
 set logscale y 10
 set xlabel "Tamaño de lado N"; set ylabel "tiempo(s)"
 set title "Time vs N"
-plot "pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
-"pdfdata/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación directa" lt rgb "green", \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
-"pdfdata/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación blocking" lt rgb "yellow" 
+plot "datafiles/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/0_3_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación eigen" lt rgb "navy",\
+"datafiles/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/1_3_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación armadillo" lt rgb "red",\
+"datafiles/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w yerrorbars linecolor "black" pt 7 ps 0.4 notitle,\
+"datafiles/4_1_Performance_Matrix_Size0.txt" u 7:5:6 w lines title "Multiplicación directa" lt rgb "green", \
+"datafiles/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with yerrorbars linecolor "black" pt 7 ps 0.4 notitle, \
+"datafiles/5_1_Performance_Matrix_Size0.txt" u 7:5:6 with lines title "Multiplicación blocking" lt rgb "yellow" 
 unset output
 unset terminal
